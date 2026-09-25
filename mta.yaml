@@ -1,7 +1,7 @@
 _schema-version: 3.3.0
 ID: StonemanGMC
 description: Stoman GMC Application.
-version: 1.0.92
+version: 1.0.93
 modules:
   - name: StonemanGMC-srv
     type: nodejs

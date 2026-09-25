@@ -63,6 +63,7 @@ sap.ui.define([
 
                 if (this.getFormMode() == "2") {
                    await this.populateEntryFormForSpatilForm("GET", this.getEntryFormDataSourceURLForEditMode(), "");
+                    await this.populateEntryFormForSpatilForm("GET", this.getEntryFormDataSourceURLForEditMode(), "");
                 }
                 else if (this.getFormMode() == "3") {
                     if (this.getEntryFormDataSourceURLForNewMode().length > 0) {
@@ -72,37 +73,90 @@ sap.ui.define([
 
             },
 
-            showEntryForm: async function (formMode) {
+           showEntryForm: async function (formMode) {
 
-                if (formMode == "2") {
-                   await this.populateEntryForm("GET", this.getEntryFormDataSourceURLForEditMode(), "");
-                }
-                else if (formMode == "3") {
-                    if (this.getEntryFormDataSourceURLForNewMode().length > 0) {
-                    await    this.populateEntryForm("GET", this.getEntryFormDataSourceURLForNewMode(), "");
-                    }
-                }
+    try {
 
-            },
+        if (formMode === "2") {
 
-            populateEntryForm: async function (oRequestType, aUrl, oRequestData) {
-                // IF condition to be done to set getURLForFormModeNew or getURLForFormModeEdit
-               await this.callApi(oRequestType, aUrl, oRequestData)
-                    .then((data) => {
-                        // writing like this .then ((data) => {}) gives the parent context, in this case the controller.
-                        console.log('Success:', data);
-                       // debugger;
-                        var oModel = new JSONModel();
-                        oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
-                        oModel.setData(data); // 'data' is the response from your API call
-                        this.getView().setModel(oModel, this.getEntryFormDataSourceModelName());
-                        //this.getView().setModel(oModel, "myModel");
-                    })
-                    .catch(function (error) {
-                        console.error('Error:', error);
-                    });
+            await this.populateEntryForm(
+                "GET",
+                this.getEntryFormDataSourceURLForEditMode(),
+                ""
+            );
 
-            },
+        } else if (formMode === "3") {
+
+            var sUrl = this.getEntryFormDataSourceURLForNewMode();
+
+            if (sUrl && sUrl.length > 0) {
+
+                await this.populateEntryForm(
+                    "GET",
+                    sUrl,
+                    ""
+                );
+            }
+        }
+
+        // यहाँ आने का मतलब है कि populateEntryForm पूरा हो चुका है
+        console.log("Entry form model is ready");
+
+    } catch (error) {
+
+        console.error("showEntryForm Error:", error);
+    }
+},
+
+           populateEntryForm: async function (oRequestType, aUrl, oRequestData) {
+
+    try {
+
+        // API response आने तक wait करेगा
+        const data = await this.callApi(
+            oRequestType,
+            aUrl,
+            oRequestData
+        );
+
+        console.log("Success:", data);
+
+        var sModelName =
+            this.getEntryFormDataSourceModelName();
+
+        var oModel =
+            this.getView().getModel(sModelName);
+
+        // अगर model नहीं है तो नया model create करें
+        if (!oModel) {
+
+            oModel = new JSONModel();
+
+            this.getView().setModel(
+                oModel,
+                sModelName
+            );
+        }
+
+        // API response model में डालें
+        oModel.setData(data);
+
+        // Binding update
+        oModel.updateBindings(true);
+
+        console.log("Entry Form Model Updated");
+
+        // बहुत important
+        return data;
+
+    } catch (error) {
+
+        console.error("populateEntryForm Error:", error);
+
+        // Error को ऊपर showEntryForm तक भेजें
+        throw error;
+    }
+},
             populateEntryFormForSpatilForm: async function (oRequestType, aUrl, oRequestData) {
                             // IF condition to be done to set getURLForFormModeNew or getURLForFormModeEdit
                         await this.callApi(oRequestType, aUrl, oRequestData)

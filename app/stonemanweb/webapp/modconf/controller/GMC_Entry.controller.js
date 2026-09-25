@@ -80,8 +80,8 @@ sap.ui.define([
                 if(formMode ==2)
                 {
                             debugger;
-                            this.handleUIOperation();
-                             this.fillInspectionType();
+                       await     this.handleUIOperation();
+                        await     this.fillInspectionType();
                             this.fieldEnalbe()             
                 }
                 if(formMode ==3)
@@ -290,19 +290,24 @@ sap.ui.define([
         },
         handleUIOperation: async function () {
             debugger;
-         
+            let oModel = this.getView().getModel('EnbDisModal');
+           oModel.setProperty('/BtnRejectEnable', false)
+            oModel.setProperty('/BtnApproveEnable', false)
+            oModel.setProperty('/BtnPostEnable',false);
+            oModel.setProperty('/BtnSubmitEnable',false);
+            oModel.setProperty('/BtnPrintEnable',false);
+
             this.FillStoragelocation();
             this.FillFromprocess();
             this.FillToprocess();
             this.FillQAL1Approval();
-        //  await  this.Plant();
               this.FillProductionAccount();
 
            this.ToPlant();
             this.FillToStorageLocation();
-         this.ContractorName();
-       this.FillQAL2Approval();
-        this.FillToSuperWiser();
+      await   this.ContractorName();
+      await this.FillQAL2Approval();
+    await  this.FillToSuperWiser();
 
          
            
