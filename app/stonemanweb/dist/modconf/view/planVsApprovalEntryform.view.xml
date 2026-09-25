@@ -1,0 +1,429 @@
+<mvc:View xmlns:smartfield="sap.ui.comp.smartfield" xmlns:odata="sap.ui.comp.odata"
+    xmlns:cards="sap.f.cards"
+    controllerName="modconfcontroller.PlanVsApprovalEntryForm"
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:T="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+	xmlns:a="sap.ui.core.Control"
+>
+
+    <Page
+        id="MapForm"
+        class="sapUiFioriObjectPage" title=""
+        showHeader="true" showNavButton="true" navButtonPress=".navBack"
+    >
+    
+        <content>
+            <f:SimpleForm
+                id="Maping"
+                maxContainerCols="2"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="Plant and User Mapping"
+                labelSpanL="4"
+                labelSpanM="4"
+                emptySpanL="0"
+                emptySpanM="0"
+                columnsL="2"
+                columnsM="1"
+                validateFieldGroup="onValidateFieldGroup"
+            >
+                <f:content>
+                <!---->
+                    <core:Title text="" />
+                    <!--
+                    <Label text="ID" />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/ID}"
+                        enabled="false"
+                        id="_ID"
+                    />
+
+                  <Label text="GMC No." />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/GMCNo}"
+                        id="_GmcNo"
+                         enabled="{EnbDisModal>/GMCNo}"
+                        
+                    />-->
+
+                    <Label text="Job WorkPo." />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/JobworkPo}"
+                        id="_jobW"
+                        showValueHelp="true"
+                          valueHelpRequest="cflForPurchaseorder"     
+                            placeholder="Select purchase order"
+                            change="ChangeJobWork" 
+                            enabled="{EnbDisModal>/JobworkPo}"
+                    />
+
+                    <Label text="SKU#" />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/SKU}"
+                        id="_Sku"
+                         enabled="{EnbDisModal>/SKU}"
+                    />
+
+                    <Label text="So No." />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/SONO}"
+                        id="_SoNo"
+                         enabled="{EnbDisModal>/SONO}"
+                    />
+                      <Label
+                        text="Contractor Name"
+                        labelFor="_cntName"
+                    />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/ContractNM}"
+                        id="_ContName"
+                         enabled="{EnbDisModal>/ContractNM}"
+                    />
+
+                    <core:Title text="" />
+                  
+                    
+
+                    <Label
+                        text="SuperwiserName"
+                        labelFor="_superVname"
+                    />
+                   <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/SuperwiserNM}"
+                        id="_SupName"
+                         enabled="{EnbDisModal>/SuperwiserNM}"
+                    />
+                    <Label
+                        text="From Processes"
+                        
+                    />
+                    
+                     <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder="Choose Series..."
+                        selectedKey="{EntryFormDataSourceModel>/FromProcess}"
+                        id="_FromProcess"
+                        items="{EntryFormDataSourceModel>/FromProcessCombo}"
+                         enabled="{EnbDisModal>/FromProcess}"
+                    >
+                       <core:Item 
+                                        key="{EntryFormDataSourceModel>Code}"
+                                        text="{EntryFormDataSourceModel>Name}"
+                                        
+                                    />
+                    </ComboBox>
+                    <Label
+                        text="To Processes"
+                        labelFor="DTP1"
+                    />
+                   <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder=""
+                        selectedKey="{EntryFormDataSourceModel>/ToProcess}"
+                        items="{EntryFormDataSourceModel>/ToProcessCombo}"
+                         enabled="{EnbDisModal>/ToProcess}"
+                        id="_ToProcess"
+                    >
+                       <core:Item 
+                                        key="{EntryFormDataSourceModel>Code}"
+                                        text="{EntryFormDataSourceModel>Name}"
+                                    />
+                    </ComboBox>
+
+                      <Label
+                        text="Production Accountant"
+                        labelFor=""
+                    />
+                   <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder=""
+                        selectedKey="{EntryFormDataSourceModel>/ProductionAccountant}"
+                        items="{EntryFormDataSourceModel>/ProdAccountantList}"
+                         enabled="{EnbDisModal>/ProductionAccountant}"
+                        id="_PAccount"
+                    >
+                        <core:Item 
+                                        key="{EntryFormDataSourceModel>ID}"
+                                        text="{EntryFormDataSourceModel>username}"
+                                    />
+                    </ComboBox>
+ 
+
+            <core:Title text=""  />
+                    <Label text="SFG Description" />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/SFGDsc}"
+                        enabled="{EnbDisModal>/SFGDsc}"
+                        id="_SFGNM"
+                    />
+
+                    <Label text="Po Quantity." />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/POQty}"
+                        id="_POQTY"
+                         enabled="{EnbDisModal>/POQty}"
+                    />
+
+                    <Label text="PlantName." />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/PlantNM}"
+                        id="_PLTNM"
+                        enabled="{EnbDisModal>/PlantNM}"
+                         
+                    />
+
+                    <Label text="FloorName" />
+                  <!--  <Input
+                        fieldGroupIds=" "
+                     value="{EntryFormDataSourceModel>/FloorNM}"
+                        id="_FLNM"
+
+                    />-->
+
+                     <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder=""
+                        selectedKey="{EntryFormDataSourceModel>/FloorNM}"
+                        items="{EntryFormDataSourceModel>/StoragelocationList}"
+                         enabled="{EnbDisModal>/FloorNM}"
+                        id="PAccount"
+                    >
+                        <core:Item 
+                                        key="{EntryFormDataSourceModel>StorageLocation}"
+                                        text="{EntryFormDataSourceModel>StorageLocationName}"
+                                    />
+                    </ComboBox>
+
+                    <Label text="QaName L1" />
+                   
+                    <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder=""
+                        selectedKey="{EntryFormDataSourceModel>/QANM}"
+                        items="{EntryFormDataSourceModel>/QAListL1}"
+                        id="_QaName"
+                         enabled="{EnbDisModal>/QANM}"
+                    >
+                        <core:Item 
+                                        key="{EntryFormDataSourceModel>ID}"
+                                        text="{EntryFormDataSourceModel>username}"
+                                    />
+                    </ComboBox>
+
+                     <core:Title text="" />
+                    <Label text="GMC Quantity" />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/GMCQty}"
+                         enabled="{EnbDisModal>/GMCQty}"
+                        
+                        id="GMCQTY"
+                        type="Number"
+                            class="m-mast-input"
+                        change="TotalQuantity"
+                        
+                    />
+
+                    <Label text="Pieces Weight" />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/PlecesWeight}"
+                        id="_PWGT"
+                        type="Number"
+                            class="m-mast-input"
+                        change="TotalQuantity"
+                         enabled="{EnbDisModal>/PlecesWeight}"
+                    />
+
+                    <Label text="QA Inspecton Num." />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/QADocumentNum}"
+                        id="QAINS"
+                    />
+
+                    <Label text="Total Weight." />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/TotalWeight}"
+                        id="TWGT"
+                         enabled="{EnbDisModal>/TotalWeight}"
+                    />
+
+                    <Label text="Remarks." />
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/Remarks}"
+                        id="_Rmk"
+                        enabled="{EnbDisModal>/Remarks}"
+                    />
+                     <Label text="SuperwiserName" />
+                  
+                    <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder=""
+                        selectedKey="{EntryFormDataSourceModel>/NSuperwiserName}"
+                       items="{EntryFormDataSourceModel>/NSuperwiserNameList}"
+                        id="__PAccount"
+                         enabled="{EnbDisModal>/NSuperwiserName}"
+                    >
+                        <core:Item 
+                        key="{EntryFormDataSourceModel>ID}"
+                        text="{EntryFormDataSourceModel>username}" />
+                    </ComboBox>
+
+	
+                    <core:Title text="" />
+                   
+
+                    <Label text="QA Name L2" />
+                   
+                     <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder=""
+                        selectedKey="{EntryFormDataSourceModel>/NQAName}"
+                       items="{EntryFormDataSourceModel>/QAListL2}"
+                        id="__QAName"
+                         enabled="{EnbDisModal>/NQAName}"
+                    >
+                        <core:Item 
+                        key="{EntryFormDataSourceModel>ID}"
+                        text="{EntryFormDataSourceModel>username}" />
+                    </ComboBox>
+
+                    <Label text="Contractor Name." />
+                    
+                    <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder=""
+                        selectedKey="{EntryFormDataSourceModel>/NContractName}"
+                       items="{EntryFormDataSourceModel>/ContractorList}"
+                        id="__NContName"
+                         enabled="{EnbDisModal>/NContractName}"
+                    >
+                        <core:Item 
+                        key="{EntryFormDataSourceModel>Supplier}"
+                        text="{EntryFormDataSourceModel>SupplierFullName}" />
+                    </ComboBox>
+
+                    <Label text="Plant Name --" />
+                    <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder=""
+                        selectedKey="{EntryFormDataSourceModel>/NPlantName}"
+                        items="{EntryFormDataSourceModel>/PlantList}"
+                        id="_PlantNM"
+                        change="FillStoragelocation2"
+                        enabled="{EnbDisModal>/NPlantName}"
+                    >
+                       <core:Item 
+                        key="{EntryFormDataSourceModel>Plant}"
+                        text="{EntryFormDataSourceModel>PlantName}" />
+                    </ComboBox>
+
+                    <Label text="Floor Name" />
+                     <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder=""
+                        selectedKey="{EntryFormDataSourceModel>/NFloorName}"
+                         items="{EntryFormDataSourceModel>/floorList}"
+                         enabled="{EnbDisModal>/NFloorName}"
+                        id="_FloorNM"
+                    >
+                         <core:Item 
+                        key="{EntryFormDataSourceModel>StorageLocation}"
+                        text="{EntryFormDataSourceModel>StorageLocationName}" />
+                    </ComboBox>
+
+                  
+                    
+                </f:content>
+            </f:SimpleForm>
+	
+          
+        </content>
+       
+       
+
+         <footer>
+            <Toolbar>
+                <content>
+                    
+                    
+                     <Button
+                        id="Approve"
+                        text="Approve"
+                        press="onApprove"
+                        type="Accept"
+                        enabled="{EnbDisModal>/BtnApproveEnable}"
+                        width="10%"
+                    />
+                    <Button
+                        id="Reject"
+                        text="Reject"
+                        press="onReject"
+                        type="Reject"
+                        enabled="{EnbDisModal>/BtnRejectEnable}"
+                        width="10%"
+                    />
+                    <ToolbarSpacer ></ToolbarSpacer>
+                     <Button
+                        id="submit"
+                        text="Submit"
+                        press="onSave"
+                        type="Accept"
+                         enabled="{EnbDisModal>/BtnSubmitEnable}"
+                        width="10%"
+                    />
+                    <Button
+                        id="cancel1"
+                        text="Cancel"
+                        press="onCancel"
+                        width="10%"
+                    />
+                     <Button
+                        id="Post"
+                        text="Post GRPO"
+                        press="onGrpoTransfer"
+                        type="Success"
+                        enabled="{EnbDisModal>/BtnPostEnable}"
+                        width="10%"
+                    />
+                    
+                   
+
+                 
+                </content>
+            </Toolbar>
+        </footer>
+  
+         </Page>
+
+ </mvc:View>

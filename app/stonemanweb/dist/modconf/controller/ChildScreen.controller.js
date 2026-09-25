@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],o=>{"use strict";return o.extend("modconfcontroller.ChildScreen.controller",{onInit(){},onOpenDialog:function(){var o=this.byId("myDialog");o.open()},onCloseDialog:function(){var o=this.byId("myDialog");o.close()}})});
+//# sourceMappingURL=ChildScreen.controller.js.map

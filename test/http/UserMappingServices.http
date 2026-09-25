@@ -1,0 +1,58 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### UserMapping
+# @name UserMapping_GET
+GET {{server}}/odata/v4/user-mapping-services/UserMapping
+Authorization: Basic {{username}}:{{password}}
+
+
+### UserMapping
+# @name UserMapping_POST
+POST {{server}}/odata/v4/user-mapping-services/UserMapping
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "6973391c-0a9a-447a-a35b-3e8afc8303b2",
+  "Plant": "Plant-6973391",
+  "Storage": "Storage-6973391",
+  "Contractor": "Contractor-6973391",
+  "Superviser": "Superviser-6973391",
+  "QA1": "QA1-6973391",
+  "Prodteam": "Prodteam-6973391",
+  "QA2": "QA2-6973391",
+  "IPTM": "IPTM-6973391",
+  "ExtraField": "ExtraField-6973391",
+  "ISActive": false
+}
+
+
+### UserMapping
+# @name UserMapping_PATCH
+PATCH {{server}}/odata/v4/user-mapping-services/UserMapping/6973391c-0a9a-447a-a35b-3e8afc8303b2
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "6973391c-0a9a-447a-a35b-3e8afc8303b2",
+  "Plant": "Plant-6973391",
+  "Storage": "Storage-6973391",
+  "Contractor": "Contractor-6973391",
+  "Superviser": "Superviser-6973391",
+  "QA1": "QA1-6973391",
+  "Prodteam": "Prodteam-6973391",
+  "QA2": "QA2-6973391",
+  "IPTM": "IPTM-6973391",
+  "ExtraField": "ExtraField-6973391",
+  "ISActive": false
+}
+
+
+### UserMapping
+# @name UserMapping_DELETE
+DELETE {{server}}/odata/v4/user-mapping-services/UserMapping/6973391c-0a9a-447a-a35b-3e8afc8303b2
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

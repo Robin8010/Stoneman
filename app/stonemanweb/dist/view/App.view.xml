@@ -1,0 +1,120 @@
+<mvc:View controllerName="stonemanweb.controller.App"
+       xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
+    xmlns:tnt="sap.tnt">
+    
+     <tnt:ToolPage id="appNew" class="sapUiDemoToolPage" sideExpanded="false">     
+       <!-- ShellBar at the top -->
+     
+        <tnt:header>
+       
+          <tnt:ToolHeader id="shellLikeToolHeader" >
+		<!--	<Button icon="sap-icon://menu2" type="Transparent" press="onCollapseExpandPress" tooltip="Menu">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="NeverOverflow"/>
+				</layoutData>
+			</Button>-->
+			<Image src="test-resources/sap/tnt/images/SAP_Logo.png" decorative="false" press="onLogoPressed" tooltip="SAP Logo">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="NeverOverflow"/>
+				</layoutData>
+			</Image>
+			<Title text="Stonemen" wrapping="false" id="productName">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="Disappear"/>
+				</layoutData>
+			</Title>
+			<Text text="Second title" visible="false" wrapping="false" id="secondTitle">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="Disappear"/>
+				</layoutData>
+			</Text>
+			<ToolbarSpacer />
+			<SearchField width="16rem" id="searchField" visible="false">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="Low" group="1"/>
+				</layoutData>
+			</SearchField>
+			<ToolbarSpacer id="spacer">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="Low" group="1"/>
+				</layoutData>
+			</ToolbarSpacer>
+			<Button visible="false" icon="sap-icon://search" type="Transparent" id="searchButton" tooltip="Search"/>
+			<OverflowToolbarButton visible="false" icon="sap-icon://source-code" type="Transparent" tooltip="Action 1" text="Action 1">
+				<layoutData>
+					<OverflowToolbarLayoutData group="2"/>
+				</layoutData>
+			</OverflowToolbarButton>
+			<OverflowToolbarButton visible="false" icon="sap-icon://card" type="Transparent" tooltip="Action 2" text="Action 2">
+				<layoutData>
+					<OverflowToolbarLayoutData group="2"/>
+				</layoutData>
+			</OverflowToolbarButton>
+			<ToolbarSeparator>
+				<layoutData>
+					<OverflowToolbarLayoutData group="2"/>
+				</layoutData>
+			</ToolbarSeparator>
+		<Label design="Bold"  text="{sysModel>/userDetails/UserDsc}" />
+			<OverflowToolbarButton visible="false" icon="sap-icon://action-settings" type="Transparent" text="Settings"/>
+			<Button visible="false" icon="sap-icon://bell" id ="bellButton" press="onAlertPress" text="3" type="Transparent" tooltip="Notification">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="NeverOverflow"/>
+				</layoutData>
+				 <customData >
+                    <core:CustomData
+                        key="count"
+                        value="{AlertModel>/alerts}" />
+                </customData>
+			</Button>
+			<tnt:ToolHeaderUtilitySeparator/>
+			<ToolbarSpacer width="1.125rem"/>
+			<Avatar id="myAvatar" src="../images/stonemenLogo.png"  displaySize="XS" press="onAvatarPressed" tooltip="Profile">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="NeverOverflow"/>
+				</layoutData>
+			</Avatar>
+		</tnt:ToolHeader>
+           
+        </tnt:header>
+        <tnt:sideContent>
+           <tnt:SideNavigation id="sideNavigation" visible="false" itemSelect=".onItemSelect" selectedKey="walked" expanded="true">
+			<tnt:NavigationList id="navigationList">
+				<tnt:NavigationListItem text="Home" key="DeshBord" icon="sap-icon://home" />
+				<tnt:NavigationListItem text="Administrator" >
+					<tnt:NavigationListItem text="Setup" icon="sap-icon://people-connected" />
+					<tnt:NavigationListItem text="License" icon="sap-icon://building" />
+					<tnt:NavigationListItem text="Addon" icon="sap-icon://mileage">
+						<tnt:NavigationListItem text="Addon-manager" />
+						<tnt:NavigationListItem text="Mobile-Addon" id="walked" />
+                       
+					</tnt:NavigationListItem>
+				</tnt:NavigationListItem>
+				
+				<tnt:NavigationListGroup text="Restricted" enabled="false">
+					<tnt:NavigationListItem text="Running" icon="sap-icon://physical-activity" />
+					<tnt:NavigationListItem text="Scissors" icon="sap-icon://scissors" />
+				</tnt:NavigationListGroup>
+				<tnt:NavigationListItem text="Sales-A/R"  key="SalesList"   icon="sap-icon://passenger-train" >
+                </tnt:NavigationListItem>
+                <tnt:NavigationListItem text="Purchase-A/R" key ="GoodsMChallan" icon="sap-icon://passenger-train" />
+                <tnt:NavigationListItem text="Business Partner" icon="sap-icon://passenger-train" />
+			</tnt:NavigationList>
+			<tnt:fixedItem>
+				<tnt:NavigationList>
+					<tnt:NavigationListItem text="reports"  icon="sap-icon://bar-chart" />
+					<tnt:NavigationListItem selectable="false" href="https://sap.com" target="_blank" text="External Link" icon="sap-icon://attachment" />
+					<tnt:NavigationListItem text="Compare" icon="sap-icon://compare" />
+				</tnt:NavigationList>
+			</tnt:fixedItem>
+		</tnt:SideNavigation>
+        </tnt:sideContent>        <!-- Main Content -->
+        <tnt:mainContents>
+            <App id="app" />
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

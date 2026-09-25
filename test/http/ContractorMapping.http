@@ -1,0 +1,48 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### ContractorMapping
+# @name ContractorMapping_GET
+GET {{server}}/odata/v4/contractor-mapping/ContractorMapping
+Authorization: Basic {{username}}:{{password}}
+
+
+### ContractorMapping
+# @name ContractorMapping_POST
+POST {{server}}/odata/v4/contractor-mapping/ContractorMapping
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "30447818-5efd-445a-a9bc-76cc01f9c889",
+  "Plant": "Plant-30447818",
+  "Storage": "Storage-30447818",
+  "ToProcess": "ToProcess-30447818",
+  "Contractor": "Contractor-30447818",
+  "Contractor_Username": "Contractor_Username-30447818"
+}
+
+
+### ContractorMapping
+# @name ContractorMapping_PATCH
+PATCH {{server}}/odata/v4/contractor-mapping/ContractorMapping/30447818-5efd-445a-a9bc-76cc01f9c889
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "30447818-5efd-445a-a9bc-76cc01f9c889",
+  "Plant": "Plant-30447818",
+  "Storage": "Storage-30447818",
+  "ToProcess": "ToProcess-30447818",
+  "Contractor": "Contractor-30447818",
+  "Contractor_Username": "Contractor_Username-30447818"
+}
+
+
+### ContractorMapping
+# @name ContractorMapping_DELETE
+DELETE {{server}}/odata/v4/contractor-mapping/ContractorMapping/30447818-5efd-445a-a9bc-76cc01f9c889
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

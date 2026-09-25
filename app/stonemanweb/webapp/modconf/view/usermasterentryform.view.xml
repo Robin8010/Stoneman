@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mvc:View
+    controllerName="modconfcontroller.usermasterentryform"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    class="d-flex justify-content-center"
+>
+     <Page id="_UserEntry" class="sapUiFioriObjectPage" title=""
+        showHeader="true" showNavButton="true" navButtonPress=".navBack" >
+      
+	
+		 <content>
+        
+          <f:SimpleForm id ="smplUserEntry"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                 title="UserMaster"
+                columnsXL="2"
+                columnsL="2"
+                columnsM="1"
+                singleContainerFullSize="false"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                
+                
+            >
+             <f:content>
+          
+<!--justifyContent="SpaceAround" its a best property for VBOX and HBox-->
+                   
+                    <Label id="lblUserName" text="UserName" required="true" />
+                   
+                    <Input
+                        fieldGroupIds=" "
+                        value="{EntryFormDataSourceModel>/username}"
+                        id="CflJob"
+                        showValueHelp="true"
+                          valueHelpRequest="cflForUser"     
+                            placeholder="Select User"
+                            change="ChangeJobWork" 
+                           
+                    />
+
+              <!--   <ComboBox
+                    id="UserList"
+                    width="100%"
+                    placeholder="Select User"
+                    selectedKey="{EntryFormDataSourceModel>/username}"
+                    items="{EntryFormDataSourceModel>/usernameList}"
+                    change="onSelectProcess"
+                    
+                    visible="true">
+                    <core:Item 
+                        key="{EntryFormDataSourceModel>WorkforcePersonExternalID}"
+                        text="{EntryFormDataSourceModel>FullName}" />
+                   </ComboBox>
+                   
+-->
+                  <!--   <Input id="txtUsername"  required="true" value="{EntryFormDataSourceModel>/username}" enabled="true" />-->
+                    
+                     <Label id="lblpass" text="Password" required="true" />
+                     <Input id="Password" type="Password" required="true" value="{EntryFormDataSourceModel>/password}" enabled="true" />
+                      <Label id="UserTy" text="UserType" required="true" />
+                    <VBox id="checkboxContainer">
+                         <CheckBox text="IsAdmin" selected="{EntryFormDataSourceModel>/IsAdmin}" select=".onCheckBoxSelect" id="chkA" />
+                         <CheckBox text="Creater/Supervisor"  selected="{EntryFormDataSourceModel>/ManagGMC}" select=".onCheckBoxSelect" id="chkB" />
+                         <CheckBox text="Quality Analyst"  selected="{EntryFormDataSourceModel>/L1Approver}" select=".onCheckBoxSelect" id="chkC1" />
+                       <!--  <CheckBox text="L2 Approver" visible="false"  selected="{EntryFormDataSourceModel>/L2Approver}" select=".onCheckBoxSelect" id="chkC12" />
+                         <CheckBox text="Supervisor"  selected="{EntryFormDataSourceModel>/IsSuperwiser}" select=".onCheckBoxSelect" id="chkC2" />
+                         -->
+                         <CheckBox text="Production Accountant " selected="{EntryFormDataSourceModel>/IsProductionAccount}" select=".onCheckBoxSelect" id="chkC3" />
+                         
+                     </VBox>
+
+                      
+                    
+
+                     
+                    </f:content>
+              </f:SimpleForm>
+       
+		
+      
+      
+         </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <Button
+                        id="submit"
+                        text="Submit"
+                        press="onAccept"
+                        type="Accept"
+                        width="10%"
+                    />
+                  
+                    <Button
+                        id="cancel"
+                        text="Cancel"
+                        press="onCancel"
+                        width="10%"
+                    />
+
+                   
+                </content>
+            </Toolbar>
+        </footer>  
+    </Page>
+</mvc:View>

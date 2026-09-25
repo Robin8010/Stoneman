@@ -1,0 +1,165 @@
+<mvc:View xmlns:cards="sap.f.cards" controllerName="modconfcontroller.ProcessMapping"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:table="sap.ui.table"
+	displayBlock="true"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:T="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+	xmlns:a="sap.ui.core.Control">
+
+	  <Page
+        id="_Processmapping"
+        class="sapUiFioriObjectPage" title=""
+        showHeader="true" showNavButton="true" navButtonPress=".navBack"
+    >
+
+        <content>
+
+            <!-- Inline styling so the grouped table header has a clear divider
+                 between the group-header row (internalBom / sampleRequirement / ...)
+                 and the column-header row (compNo / componentCode / description / ...) -->
+            <core:HTML content="
+                &lt;style&gt;
+                    .ibpcBomTable .sapUiTableColHdrTr:first-child .sapUiTableColCell {
+                        background-color: #f2f6f9;
+                        font-weight: bold;
+                        border-bottom: 2px solid #556B82;
+                    }
+                    .ibpcBomTable .sapUiTableColHdrTr:last-child .sapUiTableColCell {
+                        background-color: #ffffff;
+                        font-weight: normal;
+                        border-top: none;
+                    }
+                    .ibpcBomTable .sapUiTableColHdrCnt {
+                        border-bottom: none;
+                    }
+                &lt;/style&gt;
+            "/>
+
+            <f:SimpleForm
+                id="_SalesOrder5"
+                maxContainerCols="2"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="Peocess mapping "
+                labelSpanL="4"
+                labelSpanM="4"
+                emptySpanL="0"
+                emptySpanM="0"
+                columnsL="2"
+                columnsM="1"
+                validateFieldGroup="onValidateFieldGroup"
+            >
+                <f:content>
+							
+						<HBox alignItems="Center" width="100%">
+                            <Label text="{i18n>ItemCode}" design="Bold" width="120px"/>
+                            <Input
+                                id="ParntItem"
+                                editable="false"
+                                value="{EntryFormDataSourceModel>/ProcessDetail/0/ChildItemCode}"
+                                placeholder="{i18n>inputBox}"
+                                width="250px"/>
+                        </HBox>
+
+                        <HBox alignItems="Center" width="100%">
+                            <Label text="{i18n>ParentID}" design="Bold" width="120px"/>
+                            <Input
+                                id="skuNoInput"
+                                editable="false"
+                                value="{EntryFormDataSourceModel>/ProcessDetail/0/Parent_ID}"
+                                placeholder="{i18n>inputBox}"
+                                width="250px"/>
+                        </HBox>
+							
+
+			
+			   </f:content>
+            </f:SimpleForm>
+	
+          
+        </content>
+
+			<!-- ================= Table SECTION ================= -->
+			<Panel id="bomPanel" expandable="false" class="sapUiResponsiveMargin ibpcBomPanel">
+			
+				<content>
+
+				<Table id="_Tbl"  
+    items="{EntryFormDataSourceModel>/ProcessDetail/0/ProcessperameterLines}"  
+                           growing="true"
+                           growingScrollToLoad="true"
+                         
+
+                        class="sapUiSizeCompact"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        showSeparators="All"
+                        showNoData="true"
+                        growingThreshold="5"
+                        enableBusyIndicator="true"
+                        alternateRowColors="true"
+                        headerLevel="Auto"
+                        backgroundDesign="Translucent">
+  <headerToolbar>
+  <Toolbar >
+  <content>
+   
+
+  
+
+  </content>
+  </Toolbar>
+  </headerToolbar>
+							<columns>
+                                    <Column>
+									<Label text="Processes"/>
+									</Column>
+									<Column>
+									<Label text="Sample"/>
+									</Column>
+									<Column>
+									<Label text="Auto Allocation from  Process Template"/>
+									</Column>
+									<Column >
+									<Label text="Edition From Production"/>
+									</Column>
+									<Column>
+									<Label text="Process cost"/>
+									</Column>
+									<Column hAlign="End" >
+									<Label text="Edit"/>
+									</Column>
+									</columns>
+									<items>
+									<ColumnListItem>
+									<cells  >
+                                    <Text text="{EntryFormDataSourceModel>ProcessID_Desc}"/>
+                                    <Input value="{EntryFormDataSourceModel>Sample}"/>
+                                    <Input value="{EntryFormDataSourceModel>ProcessTemplate}"/>
+                                    <Input value="{EntryFormDataSourceModel>Edition}"/>
+                                    <Input value="{EntryFormDataSourceModel>Processcost}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+
+				</content>
+			</Panel>
+	
+
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button id="addButton" text="{i18n>add}" type="Emphasized" press="onSave"/>
+				<Button id="cancelButton" text="{i18n>cancel}" type="Transparent" press=".onCancel"/>
+			</Toolbar>
+		</footer>
+
+	</Page>
+
+</mvc:View>

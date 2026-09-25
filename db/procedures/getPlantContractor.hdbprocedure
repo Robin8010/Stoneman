@@ -1,0 +1,25 @@
+namespace Stonemen_GMC;
+
+PROCEDURE "getPlantContractor" (
+    IN I_PLANT NVARCHAR(50),
+    OUT EX_RESULT TABLE (
+        Plant NVARCHAR(50),
+        ID NVARCHAR(36),
+        username NVARCHAR(100)
+        
+    )
+)
+LANGUAGE SQLSCRIPT AS
+BEGIN
+    
+    EX_RESULT = 
+        SELECT
+            UM.Plant,
+            U.ID,
+            U.username
+        FROM UserMapping AS UM
+        JOIN UserMasterT AS U
+            ON UM.Contractor = U.ID
+        WHERE UM.Plant = :I_PLANT;
+
+END;

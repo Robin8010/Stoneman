@@ -1,0 +1,48 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### Prodteam
+# @name Prodteam_GET
+GET {{server}}/odata/v4/prodteam/Prodteam
+Authorization: Basic {{username}}:{{password}}
+
+
+### Prodteam
+# @name Prodteam_POST
+POST {{server}}/odata/v4/prodteam/Prodteam
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "16424251-2680-4710-9971-c87cd1ff86ba",
+  "Plant": "Plant-16424251",
+  "Storage": "Storage-16424251",
+  "ToProcess": "ToProcess-16424251",
+  "Prodteam": "Prodteam-16424251",
+  "Prodteam_Username": "Prodteam_Username-16424251"
+}
+
+
+### Prodteam
+# @name Prodteam_PATCH
+PATCH {{server}}/odata/v4/prodteam/Prodteam/16424251-2680-4710-9971-c87cd1ff86ba
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "16424251-2680-4710-9971-c87cd1ff86ba",
+  "Plant": "Plant-16424251",
+  "Storage": "Storage-16424251",
+  "ToProcess": "ToProcess-16424251",
+  "Prodteam": "Prodteam-16424251",
+  "Prodteam_Username": "Prodteam_Username-16424251"
+}
+
+
+### Prodteam
+# @name Prodteam_DELETE
+DELETE {{server}}/odata/v4/prodteam/Prodteam/16424251-2680-4710-9971-c87cd1ff86ba
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

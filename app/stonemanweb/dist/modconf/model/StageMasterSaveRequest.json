@@ -1,0 +1,15 @@
+{
+    "StageCode": null,
+    "Description": null,
+    "IsApproval": null,
+    "SendEmail": null,
+    "SendAppNotification": null,
+    "NoOfApprovals": null,
+    "NoOfRejections": null,
+    "Role": [
+        {
+            "Role_RoleGuid": null,
+            "DelMark": 0
+        }
+    ]
+}

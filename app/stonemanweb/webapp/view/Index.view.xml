@@ -1,0 +1,5 @@
+<mvc:View controllerName="stonemanweb.controller.Index"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    
+</mvc:View>

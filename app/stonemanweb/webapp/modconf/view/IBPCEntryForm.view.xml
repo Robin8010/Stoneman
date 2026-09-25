@@ -1,0 +1,399 @@
+<mvc:View xmlns:cards="sap.f.cards" controllerName="modconfcontroller.Ibpc_Entry"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:table="sap.ui.table"
+	displayBlock="true"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:T="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+	xmlns:a="sap.ui.core.Control">
+
+	  <Page
+        id="_GMC_Formg"
+        class="sapUiFioriObjectPage" title=""
+        showHeader="true" showNavButton="true" navButtonPress=".navBack"
+    >
+
+        <content>
+
+            <!-- Inline styling so the grouped table header has a clear divider
+                 between the group-header row (internalBom / sampleRequirement / ...)
+                 and the column-header row (compNo / componentCode / description / ...) -->
+            <core:HTML content="
+                &lt;style&gt;
+                    .ibpcBomTable .sapUiTableColHdrTr:first-child .sapUiTableColCell {
+                        background-color: #f2f6f9;
+                        font-weight: bold;
+                        border-bottom: 2px solid #556B82;
+                    }
+                    .ibpcBomTable .sapUiTableColHdrTr:last-child .sapUiTableColCell {
+                        background-color: #ffffff;
+                        font-weight: normal;
+                        border-top: none;
+                    }
+                    .ibpcBomTable .sapUiTableColHdrCnt {
+                        border-bottom: none;
+                    }
+                &lt;/style&gt;
+            "/>
+
+            <f:SimpleForm
+                id="_SalesOrder5"
+                maxContainerCols="2"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="IBPC Entry"
+                labelSpanL="4"
+                labelSpanM="4"
+                emptySpanL="0"
+                emptySpanM="0"
+                columnsL="2"
+                columnsM="1"
+                validateFieldGroup="onValidateFieldGroup"
+            >
+                <f:content>
+							<core:Title text=""/>
+							<Label text="{i18n>Buyer}" design="Bold"/>
+							<Input id="buyerInputa" editable="false" value="{EntryFormDataSourceModel>/Buyer}" placeholder="{i18n>inputBox}"/>
+
+							<Label text="{i18n>SO NO.}" design="Bold"/>
+							<Input id="CflSalesOrder" showValueHelp="true" valueHelpRequest="cflForSalesOrder" value="{EntryFormDataSourceModel>/SalesOrderNo}" placeholder="{i18n>inputBox}"/>
+
+							<Label text="{i18n>SkuNo}" design="Bold"/>
+							<Input id="CflItemCode" value="{EntryFormDataSourceModel>/ItemCode}" showValueHelp="true" valueHelpRequest="cflForItemCode" placeholder="{i18n>inputBox}"/>
+					
+							<core:Title text=""/>
+							<Label text="{i18n>Product}" design="Bold"/>
+							<Input id="productInput" editable="false" value="{EntryFormDataSourceModel>/ItemName}" placeholder="{i18n>inputBox}"/>
+
+							<Label text="{i18n>CadNo}" design="Bold"/>
+							<Input id="cadNoInput" value="{EntryFormDataSourceModel>/CadNo}" placeholder="{i18n>inputBox}"/>
+
+							<Label text="{i18n>FinalPkgUnit}" design="Bold"/>
+							<Input id="finalPkgUnitInput" value="{EntryFormDataSourceModel>/PkgUnit}" placeholder="{i18n>inputBox}"/>
+
+							<Label text="{i18n>Date}" design="Bold"/>
+							<DatePicker id="datePicker" value="{EntryFormDataSourceModel>/Date}" displayFormat="dd.MM.yyyy" valueFormat="yyyy-MM-dd" placeholder="{i18n>datePicker}"/>
+					
+
+			
+			   </f:content>
+            </f:SimpleForm>
+	
+          
+        </content>
+
+			<!-- ================= INTERNAL BOM SECTION ================= -->
+		<!--	<Panel id="bomPanel" expandable="true" class="sapUiResponsiveMargin ibpcBomPanel">-->
+
+				<content>
+
+					<table:Table
+						id="ibpcBomTable"
+						selectionMode="None"
+						fixedColumnCount="1"
+						columnHeaderHeight="10"
+						rows="{EntryFormDataSourceModel>/IBPC_LineNo}"
+						enableColumnReordering="false"
+					>
+
+						<table:columns>
+
+							<!-- Internal BOM -->
+							<table:Column width="6rem" headerSpan="6">
+								<table:multiLabels>
+									<Label text="Internal BOM"/>
+									<Label text="{i18n>S.R.}"/>
+								</table:multiLabels>
+								<table:template>
+								  <Text text="{EntryFormDataSourceModel>LineNum}" />
+									
+								</table:template>
+							</table:Column>
+							<table:Column width="10rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>ComponentCode}"/>
+								</table:multiLabels>
+								<table:template>
+								  <Text text="{EntryFormDataSourceModel>INTComponentCode}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="10rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Description}"/>
+								</table:multiLabels>
+								<table:template>
+								  <Text text="{EntryFormDataSourceModel>INTDescription}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="7rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Quantity}"/>
+								</table:multiLabels>
+								<table:template>
+								<Text text="{EntryFormDataSourceModel>INTQuantity}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="6rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Uom}"/>
+								</table:multiLabels>
+								<table:template>
+								<Text text="{EntryFormDataSourceModel>INTUom}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="10rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Remarks}"/>
+								</table:multiLabels>
+								<table:template>
+									<Input value="{EntryFormDataSourceModel>INTRemarks}"/>
+								
+									
+								</table:template>
+							</table:Column>
+
+							<!-- Sample Requirement -->
+							<table:Column width="9rem" headerSpan="5">
+								<table:multiLabels>
+									<Label text="Sample Requirement"/>
+									<Label text="{i18n>ComponentCode}"/>
+								</table:multiLabels>
+								<table:template>
+								<Text text="{EntryFormDataSourceModel>SAMComponentCode}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="10rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Description}"/>
+								</table:multiLabels>
+								<table:template>
+								<Text text="{EntryFormDataSourceModel>SAMDescription}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="7rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Quantity}"/>
+								</table:multiLabels>
+								<table:template>
+								<Text text="{EntryFormDataSourceModel>SAMQuantity}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="6rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Uom}"/>
+								</table:multiLabels>
+								<table:template>
+								<Text text="{EntryFormDataSourceModel>SAMUom}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="10rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Remarks}"/>
+								</table:multiLabels>
+								<table:template>
+								<Input value="{EntryFormDataSourceModel>ADMRemarks}"/>
+								
+									
+								</table:template>
+							</table:Column>
+
+							<!-- Auto Allocation -->
+							<table:Column width="9rem" headerSpan="5">
+								<table:multiLabels>
+									<Label text="Auto Allocation"/>
+									<Label text="{i18n>ComponentCode}"/>
+								</table:multiLabels>
+								<table:template>
+								<Text text="{EntryFormDataSourceModel>ALLComponentCode}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="9rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Description}"/>
+								</table:multiLabels>
+								<table:template>
+								<Text text="{EntryFormDataSourceModel>ALLDescription}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="6rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Quantity}"/>
+								</table:multiLabels>
+								<table:template>
+								<Text text="{EntryFormDataSourceModel>ALLQuantity}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="9rem"> 
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Uom}"/>
+								</table:multiLabels>
+								<table:template>
+								<Text text="{EntryFormDataSourceModel>ALLUom}" />
+									
+								</table:template>
+							</table:Column>
+
+							<table:Column width="9rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Remarks}"/>
+								</table:multiLabels>
+								<table:template>
+								
+								<Input value="{EntryFormDataSourceModel>ALLRemarks}"/>	
+								</table:template>
+							</table:Column>
+
+							<!-- Edition -->
+							<table:Column width="9rem" headerSpan="5">
+								<table:multiLabels>
+									<Label text="Edition"/>
+									<Label text="{i18n>ComponentType}"/>
+								</table:multiLabels>
+								<table:template>
+											<Input
+                                                            fieldGroupIds=" "
+                                                            value="{EntryFormDataSourceModel>EDIType}"
+                                                            id="CflType"
+                                                            showValueHelp="true"
+															 
+                                                            valueHelpRequest="cflForComponentType"     
+                                                                placeholder="Select componentType"
+                                                               
+                                                        />
+								</table:template>
+							</table:Column>
+
+						<table:Column width="9rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>ComponentCode}"/>
+								</table:multiLabels>
+							<table:template>
+											<Input
+                                                            fieldGroupIds=" "
+                                                            value="{EntryFormDataSourceModel>EDIComponentCode}"
+                                                            id="CflComponent"
+                                                            showValueHelp="true"
+															 
+                                                            valueHelpRequest="cflForComponent"     
+                                                                placeholder="Select component"
+                                                               
+                                                        />
+								</table:template>
+							</table:Column>
+
+							<table:Column width="9rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Description}"/>
+								</table:multiLabels>
+								<table:template>
+								
+									<Input editable="false" value="{EntryFormDataSourceModel>EDIDescription}"/>
+								</table:template>
+							</table:Column>
+
+							<table:Column width="6rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Quantity}"/>
+								</table:multiLabels>
+								<table:template>
+								
+									<Input value="{EntryFormDataSourceModel>EDIQuantity}"/>
+								</table:template>
+							</table:Column>
+
+							<table:Column width="9rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Uom}"/>
+								</table:multiLabels>
+								<table:template>
+								
+								<Input editable="false" value="{EntryFormDataSourceModel>EDIUom}"/>
+								</table:template>
+							</table:Column>
+
+							<table:Column width="9rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>Remarks}"/>
+								</table:multiLabels>
+								<table:template>
+								
+									<Input value="{EntryFormDataSourceModel>EDIRemarks}"/>
+								</table:template>
+							</table:Column>
+
+							<table:Column width="9rem">
+								<table:multiLabels>
+									<Label text=""/>
+									<Label text="{i18n>AddProcess}"/>
+								</table:multiLabels>
+								<table:template>
+								
+									 <Button icon="sap-icon://navigation-right-arrow" type="Transparent" press="OnProcessClick"></Button>
+								</table:template>
+							</table:Column>
+
+						</table:columns>
+
+					</table:Table>
+
+				</content>
+			<!--</Panel>-->
+	
+
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button id="Copyfrom" text="{i18n>Copy From So}" type="Emphasized" press="onCopyFrom"/>
+				<Button id="addButton" text="{i18n>Save}" type="Emphasized" press="onSave"/>
+				<Button id="cancelButton" text="{i18n>Cancel}" type="Transparent" press=".onCancel"/>
+			</Toolbar>
+		</footer>
+
+	</Page>
+
+</mvc:View>

@@ -1,0 +1,64 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### UserMapping
+# @name UserMapping_GET
+GET {{server}}/odata/v4/filtered-user-mapping/UserMapping
+Authorization: Basic {{username}}:{{password}}
+
+
+### UserMapping
+# @name UserMapping_POST
+POST {{server}}/odata/v4/filtered-user-mapping/UserMapping
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "72322085-1b4f-4312-a030-051262e1628f",
+  "Contractor": "Contractor-7232208",
+  "Plant": "Plant-7232208",
+  "ProdteamID": "72322086-8d80-4db9-b095-455207aeb1be",
+  "Prodteam": "Prodteam-7232208",
+  "QA1ID": "72322088-99e0-4dd7-a86a-094a207c1454",
+  "QA1": "QA1-7232208",
+  "QA2ID": "72322088-9ab4-4e38-970f-a1b60f9bbe99",
+  "QA2": "QA2-7232208",
+  "Shift": "Shift-7232208",
+  "Storage": "Storage-7232208",
+  "SuperviserID": "72322087-bd32-4a98-9567-ce31589b0e41",
+  "Superviser": "Superviser-7232208",
+  "Process": "Process-7232208"
+}
+
+
+### UserMapping
+# @name UserMapping_PATCH
+PATCH {{server}}/odata/v4/filtered-user-mapping/UserMapping/72322085-1b4f-4312-a030-051262e1628f
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "72322085-1b4f-4312-a030-051262e1628f",
+  "Contractor": "Contractor-7232208",
+  "Plant": "Plant-7232208",
+  "ProdteamID": "72322086-8d80-4db9-b095-455207aeb1be",
+  "Prodteam": "Prodteam-7232208",
+  "QA1ID": "72322088-99e0-4dd7-a86a-094a207c1454",
+  "QA1": "QA1-7232208",
+  "QA2ID": "72322088-9ab4-4e38-970f-a1b60f9bbe99",
+  "QA2": "QA2-7232208",
+  "Shift": "Shift-7232208",
+  "Storage": "Storage-7232208",
+  "SuperviserID": "72322087-bd32-4a98-9567-ce31589b0e41",
+  "Superviser": "Superviser-7232208",
+  "Process": "Process-7232208"
+}
+
+
+### UserMapping
+# @name UserMapping_DELETE
+DELETE {{server}}/odata/v4/filtered-user-mapping/UserMapping/72322085-1b4f-4312-a030-051262e1628f
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

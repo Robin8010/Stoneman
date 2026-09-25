@@ -1,0 +1,400 @@
+{
+	"_version": "1.76.0",
+	"sap.app": {
+		"id": "stonemanweb",
+		"type": "application",
+		"i18n": {
+			"bundleUrl": "i18n/i18n.properties",
+			"supportedLocales": [
+				""
+			]
+		},
+		"applicationVersion": {
+			"version": "0.0.1"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"sourceTemplate": {
+			"id": "@sap/generator-fiori:basic",
+			"version": "1.19.3",
+			"toolsId": "45bf59c1-80cc-462f-a4a8-5fbc0ee47e16"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/odata/v4/user-master/",
+				"type": "OData",
+				"settings": {
+					"annotations": [],
+					"odataVersion": "4.0"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": true,
+		"dependencies": {
+			"minUI5Version": "1.141.3",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "stonemanweb.i18n.i18n",
+					"supportedLocales": [
+						""
+					]
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"operationMode": "Server",
+					"autoExpandSelect": true,
+					"earlyRequests": true
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"transition": "slide",
+				"type": "View",
+				"viewType": "XML",
+				"path": "stonemanweb.view",
+				"async": true,
+				"viewPath": "stonemanweb.view"
+			},
+			"routes": [
+				{
+					"name": "RouteIndex",
+					"pattern": "RouteIndex",
+					"target": [
+						"TargetIndex"
+					]
+				},
+				{
+					"name": "LoginPage",
+					"pattern": "",
+					"target": [
+						"TargetLoginPage"
+					]
+				},
+				{
+					"name": "AppPage",
+					"pattern": "App",
+					"target": [
+						"rootView"
+					]
+				},
+				{
+					"name": "DeshBord",
+					"pattern": "DeshBord",
+					"target": [
+						"TargetDeshBord"
+					]
+				},
+				{
+					"name": "SalesList",
+					"pattern": "SalesList",
+					"target": [
+						"TargetSalesList"
+					]
+				},
+				{
+					"name": "Sales",
+					"pattern": "Order/{someParam}",
+					"target": [
+						"TargetOrderPage"
+					]
+				},
+				{
+					"name": "Child",
+					"pattern": "Child",
+					"target": [
+						"TargetChildPage"
+					]
+				},
+				{
+					"name": "GoodsMChallan",
+					"pattern": "GoodsMovment",
+					"target": [
+						"GoodsMovmentList"
+					]
+				},
+				{
+					"name": "GMCReport",
+					"pattern": "GMCReport",
+					"target": [
+						"GMCReportTarget"
+					]
+				},
+				{
+					"name": "ProcessCostingConfirmationsheet",
+					"pattern": "ProcessCostingConfirmationsheet",
+					"target": [
+						"ProcessCostinTarget"
+					]
+				},
+				{
+					"name": "ProcessCostingConfirmationsheetList",
+					"pattern": "ProcessCostingConfirmationsheetList",
+					"target": [
+						"ProcessCostinListTarget"
+					]
+				},
+				{
+					"name": "RouteNameUserMasterConfiguration",
+					"pattern": "RouteNameUserMasterConfiguration",
+					"target": [
+						"TargetUserConfiguration"
+					],
+					"cache": true
+				},
+				{
+					"name": "PlantVsApproverMap",
+					"pattern": "PlantVsApproverMap",
+					"target": [
+						"PlantVsApproverMap"
+					]
+				},
+				{
+					"name": "RouterNameUserMasterEntryForm",
+					"pattern": "RouterNameUserMasterEntryForm",
+					"target": [
+						"TargetUserMasterEntryForm"
+					],
+					"cache": true
+				},
+				{
+					"name": "GoodsMChallanEntry",
+					"pattern": "GoodsMChallanEntry",
+					"target": [
+						"GoodsMovmentEntry"
+					]
+				},
+				{
+					"name": "DebitNoteLayout",
+					"pattern": "DebitNoteLayout",
+					"target": [
+						"DebitNoteLayoutList"
+					]
+				},
+				{
+					"name": "IBPCList",
+					"pattern": "IBPCList",
+					"target": [
+						"TargetIBPCList"
+					]
+				},
+				{
+					"name": "IBPCEntry",
+					"pattern": "IBPCEntry",
+					"target": [
+						"TargetIBPCEntry"
+					]
+				},
+				{
+					"name": "ProcessLinking",
+					"pattern": "ProcessLinking",
+					"target": [
+						"TargetProcessLinking"
+					]
+				},
+				{
+					"name": "LandingPageIndex",
+					"pattern": "LandingPageIndex",
+					"target": [
+						"LandingIndex"
+					]
+				}
+			],
+			"targets": {
+				"TargetIndex": {
+					"id": "Index",
+					"name": "Index"
+				},
+				"TargetIBPCEntry": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "IBPCEntryForm",
+					"viewName": "IBPCEntryForm",
+					"viewPath": "modconfview"
+				},
+				"TargetProcessLinking": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "ProcessMapping",
+					"viewName": "ProcessMapping",
+					"viewPath": "modconfview"
+				},
+				"TargetIBPCList": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "IBPCListForm",
+					"viewName": "IBPCListForm",
+					"viewPath": "modconfview"
+				},
+				"PlantVsApproverMap": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "PlantVsApproverMapingList",
+					"viewName": "PlantVsApproverMapingList",
+					"viewPath": "modconfview"
+				},
+				"GMCReportTarget": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "GoodsMovmentReport",
+					"viewName": "GoodsMovmentReport",
+					"viewPath": "modconfview"
+				},
+				"ProcessCostinTarget": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "CostingConfirmationSheet",
+					"viewName": "CostingConfirmationSheet",
+					"viewPath": "modconfview"
+				},
+				"ProcessCostinListTarget": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "CostingConfirmationSheetList",
+					"viewName": "CostingConfirmationSheetList",
+					"viewPath": "modconfview"
+				},
+				"TargetChildPage": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "ChildScreen",
+					"viewName": "ChildScreen",
+					"viewPath": "modconfview"
+				},
+				"DebitNoteLayoutList": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "DebitNoteListForm",
+					"viewName": "DebitNoteListForm",
+					"viewPath": "modconfview"
+				},
+				"TargetSalesList": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "SalesOrderList",
+					"viewName": "SalesOrderList",
+					"viewPath": "modconfview"
+				},
+				"TargetUserConfiguration": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "usermasterlistview",
+					"viewName": "usermasterlistview",
+					"viewPath": "modconfview"
+				},
+				"TargetUserMasterEntryForm": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "usermasterentryform",
+					"viewName": "usermasterentryform",
+					"viewPath": "modconfview"
+				},
+				"TargetOrderPage": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "SalesOrder",
+					"viewName": "SalesOrder",
+					"viewPath": "modconfview"
+				},
+				"TargetMenuPage": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "Menu",
+					"viewName": "Menu",
+					"viewPath": "modconfview"
+				},
+				"TargetLoginPage": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "Login",
+					"viewName": "Login",
+					"viewPath": "loginview"
+				},
+				"TargetDeshBord": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "dashboard",
+					"viewName": "dashboard",
+					"viewPath": "modconfview"
+				},
+				"GoodsMovmentList": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "GoodsMovment",
+					"viewName": "GoodsMovment",
+					"viewPath": "modconfview"
+				},
+				"GoodsMovmentEntry": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewId": "GMS_Entry",
+					"viewName": "GMS_Entry",
+					"viewPath": "modconfview"
+				},
+				"LandingIndex": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "Landing",
+					"viewName": "Landing",
+					"viewPath": "landingview"
+				}
+			}
+		},
+		"rootView": {
+			"viewName": "stonemanweb.view.App",
+			"type": "XML",
+			"id": "App"
+		},
+		"flexBundle": false
+	},
+	"sap.cloud": {
+		"public": true,
+		"service": "stonemanweb"
+	}
+}

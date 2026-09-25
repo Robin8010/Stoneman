@@ -1,0 +1,14 @@
+{
+      "ID": null,
+      "username": null,
+      "Description":null,
+      "password": null,
+      "IsAdmin": null,
+      "ManagGMC": null,
+      "IsSuperwiser": null,
+      "IsProductionAccount": null,
+      "L1Approver": null,
+      "L2Approver": null,
+      "Contractor":null,
+      "ISActive":null
+}

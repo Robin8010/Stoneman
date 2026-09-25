@@ -1,0 +1,145 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### Orders
+# @name Orders_GET
+GET {{server}}/odata/v4/order/Orders
+Authorization: Basic {{username}}:{{password}}
+
+
+### Orders
+# @name Orders_POST
+POST {{server}}/odata/v4/order/Orders
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "20563568-1810-4b8a-a3a6-74897870f478",
+  "orderNo": "orderNo-2056356",
+  "customer": "customer-2056356",
+  "totalAmount": 2070615.19,
+  "items": [
+    {
+      "ID": "2263985d-e4cb-4679-858b-71e7a44ef34c",
+      "product": "product-2263985",
+      "quantity": 14,
+      "price": 28347111.27,
+      "createdAt": "2009-02-03T00:00:00.000Z",
+      "createdBy": "createdBy.1ciwh@example.net",
+      "modifiedAt": "2010-05-04T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.1ciwh@example.org"
+    },
+    {
+      "ID": "22639867-50e4-4633-8ce0-28dcdf6066ce",
+      "product": "product-2263986",
+      "quantity": 59,
+      "price": 12224586.15,
+      "createdAt": "2023-02-14T00:00:00.000Z",
+      "createdBy": "createdBy.1ciwi@example.org",
+      "modifiedAt": "2016-04-03T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.1ciwi@example.com"
+    }
+  ],
+  "createdAt": "2010-02-22T00:00:00.000Z",
+  "createdBy": "createdBy.182p0@example.com",
+  "modifiedAt": "2002-01-29T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.182p0@example.org"
+}
+
+
+### Orders
+# @name Orders_PATCH
+PATCH {{server}}/odata/v4/order/Orders/20563568-1810-4b8a-a3a6-74897870f478
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "20563568-1810-4b8a-a3a6-74897870f478",
+  "orderNo": "orderNo-2056356",
+  "customer": "customer-2056356",
+  "totalAmount": 2070615.19,
+  "items": [
+    {
+      "ID": "2263985d-e4cb-4679-858b-71e7a44ef34c",
+      "product": "product-2263985",
+      "quantity": 14,
+      "price": 28347111.27,
+      "createdAt": "2009-02-03T00:00:00.000Z",
+      "createdBy": "createdBy.1ciwh@example.net",
+      "modifiedAt": "2010-05-04T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.1ciwh@example.org"
+    },
+    {
+      "ID": "22639867-50e4-4633-8ce0-28dcdf6066ce",
+      "product": "product-2263986",
+      "quantity": 59,
+      "price": 12224586.15,
+      "createdAt": "2023-02-14T00:00:00.000Z",
+      "createdBy": "createdBy.1ciwi@example.org",
+      "modifiedAt": "2016-04-03T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.1ciwi@example.com"
+    }
+  ],
+  "createdAt": "2010-02-22T00:00:00.000Z",
+  "createdBy": "createdBy.182p0@example.com",
+  "modifiedAt": "2002-01-29T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.182p0@example.org"
+}
+
+
+### Orders
+# @name Orders_DELETE
+DELETE {{server}}/odata/v4/order/Orders/20563568-1810-4b8a-a3a6-74897870f478
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### OrderItems
+# @name OrderItems_GET
+GET {{server}}/odata/v4/order/OrderItems
+Authorization: Basic {{username}}:{{password}}
+
+
+### OrderItems
+# @name OrderItems_POST
+POST {{server}}/odata/v4/order/OrderItems
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "2263985d-e4cb-4679-858b-71e7a44ef34c",
+  "product": "product-2263985",
+  "quantity": 14,
+  "price": 28347111.27,
+  "createdAt": "2009-02-03T00:00:00.000Z",
+  "createdBy": "createdBy.1ciwh@example.net",
+  "modifiedAt": "2010-05-04T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.1ciwh@example.org"
+}
+
+
+### OrderItems
+# @name OrderItems_PATCH
+PATCH {{server}}/odata/v4/order/OrderItems/2263985d-e4cb-4679-858b-71e7a44ef34c
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "2263985d-e4cb-4679-858b-71e7a44ef34c",
+  "product": "product-2263985",
+  "quantity": 14,
+  "price": 28347111.27,
+  "createdAt": "2009-02-03T00:00:00.000Z",
+  "createdBy": "createdBy.1ciwh@example.net",
+  "modifiedAt": "2010-05-04T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.1ciwh@example.org"
+}
+
+
+### OrderItems
+# @name OrderItems_DELETE
+DELETE {{server}}/odata/v4/order/OrderItems/2263985d-e4cb-4679-858b-71e7a44ef34c
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

@@ -1,0 +1,34 @@
+{  
+      "Buyer": null,
+      "SalesOrderNo": null,
+      "ItemCode": null,
+      "ItemName": null,
+      "CadNo": null,
+      "PkgUnit": null,
+      "Date": null,
+      "IBPC_LineNo": [
+            {     
+                  "LineNum"                 :null,
+                  "INTComponentCode"        :null,
+                  "INTDescription"          :null,
+                  "INTQuantity"             :null,
+                  "INTUom"                  :null,
+                  "INTRemarks"              :null,
+                  "SAMComponentCode"        :null,
+                  "SAMDescription"          :null,
+                  "SAMQuantity"             :null,
+                  "SAMUom"                  :null,
+                  "ADMRemarks"              :null,
+                  "ALLComponentCode"        :null,
+                  "ALLDescription"          :null,
+                  "ALLQuantity"             :null,
+                  "ALLUom"                  :null,
+                  "ALLRemarks"              :null,
+                  "EDIComponentCode"        :null,
+                  "EDIDescription"          :null,
+                  "EDIQuantity"             :null,
+                  "EDIUom"                  :null,
+                  "EDIRemarks"              :null
+            }
+      ]
+}

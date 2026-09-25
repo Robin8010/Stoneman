@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-testui": "cds watch --open testui/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-stonemanweb": "cds watch --open stonemanweb/index.html?sap-ui-xx-viewCache=false --livereload false",
     "undeploy": "cf undeploy TestCap2 --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
     "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
@@ -26,11 +26,17 @@
     "requires": {
       "destinations": true,
       "auth": "mocked"
+    },
+     "query": {
+      "limit": {
+       "default": 100000,
+      "max": 100000
+      }
     }
   },
   "workspaces": {
     "packages": [
-      "app/testui"
+      "app/stonemanweb"
     ],
     "nohoist": [
       "app/router",

@@ -1,0 +1,21 @@
+{
+  "ProcessDetail": [
+    {
+      "ChildItemCode":"",
+      "Parent_ID":"",
+      "Row_ID": "",
+      "ItemCode": "",
+      "ProcessperameterLines": [
+        {
+          "ProcessId":"",
+          "ProcessID_Desc": "",
+          "Sample": "",
+          "ProcessTemplate": "",
+          "Edition": "",
+          "Processcost": ""
+        }
+      ]
+    }
+    
+  ]
+}

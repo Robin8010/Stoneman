@@ -1,0 +1,90 @@
+<mvc:View xmlns:smartfield="sap.ui.comp.smartfield" xmlns:odata="sap.ui.comp.odata"
+    xmlns:cards="sap.f.cards"
+    controllerName="modconfcontroller.SalesOrderList"
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:T="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+	xmlns:a="sap.ui.core.Control"
+>
+    <Page
+        id="_SalesOrder_ListForm"
+        class="sapUiFioriObjectPage" title=""
+        showHeader="true" showNavButton="true" navButtonPress=".navBack"
+    > 
+     <content>
+            <f:SimpleForm
+                id="_SalesOrderList"
+                maxContainerCols="2"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="SalesOrderList"
+                labelSpanL="4"
+                labelSpanM="4"
+                emptySpanL="0"
+                emptySpanM="0"
+                columnsL="2"
+                columnsM="1"
+                validateFieldGroup="onValidateFieldGroup"
+            >
+     <VBox >
+    <!-- Search Field for Filtering -->
+   
+    <!-- List to Display Items -->
+  
+  <Table id="Tbl" items="{Robin>/items}" >
+  <headerToolbar>
+  <Toolbar >
+  <content>
+  <SearchField placeholder="DocNum" liveChange="onSearch"></SearchField>
+  <SearchField placeholder="CardName" liveChange="onSearchWithName"></SearchField>
+  <SearchField placeholder="DocDate" liveChange="onSearchWithDate"></SearchField>
+  <Button text="Addnew" press="Addnew"></Button>
+  </content>
+  </Toolbar>
+  </headerToolbar>
+							<columns>
+								<Column>
+									<Label text="DocNum"/>
+								</Column>
+								<Column>
+									<Label text="CardCode"/>
+								</Column>
+								<Column>
+									<Label text="CardName"/>
+								</Column>
+								<Column>
+									<Label text="Ref no."/>
+								</Column>
+                <Column>
+									<Label text="DocDate"/>
+								</Column>
+                 <Column>
+									<Label text="Edit"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells >
+                  	<Text  text="{Robin>DocNum}"/>
+										<Text text="{Robin>Code}"/>
+										<Text text="{Robin>Name}"/>
+										<Text text="{Robin>Ref}"/>
+										<Text text="{Robin>DocDate}"/>
+                    <Button text="Edit" press="onEditPress"></Button>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+
+  </VBox>  
+   </f:SimpleForm>
+     </content>
+     
+    </Page>
+</mvc:View>

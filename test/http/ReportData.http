@@ -1,0 +1,82 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### GMCHeaderReport
+# @name GMCHeaderReport_GET
+GET {{server}}/odata/v4/report-data/GMCHeaderReport
+Authorization: Basic {{username}}:{{password}}
+
+
+### GMCHeaderReport
+# @name GMCHeaderReport_POST
+POST {{server}}/odata/v4/report-data/GMCHeaderReport
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "26556172-aa1c-4b2e-8783-a6e20615402a",
+  "createdAt": "2012-06-04T00:00:00.000Z",
+  "QADocumentNum": "QADocumentNum-26556172",
+  "ShiftTime": "ShiftTime-26556172",
+  "PalletNumber": "PalletNumber-26556172",
+  "JobworkPo": "JobworkPo-26556172",
+  "SONO": "SONO-26556172",
+  "CycleTime": "CycleTime-26556172",
+  "FromProcessNM": "FromProcessNM-26556172",
+  "VendorCode": "VendorCode-26556172",
+  "ContractNM": "ContractNM-26556172",
+  "Superviser1": "Superviser1-26556172",
+  "QA1Name": "QA1Name-26556172",
+  "ToProcessNM": "ToProcessNM-26556172",
+  "NContractCode": "NContractCode-26556172",
+  "NContractName": "NContractName-26556172",
+  "Superviser2": "Superviser2-26556172",
+  "SKU": "SKU-26556172",
+  "SFGDsc": "SFGDsc-26556172",
+  "GMCQty": 51.86,
+  "modifiedAt": "2012-04-29T00:00:00.000Z",
+  "Remarks": "Remarks-26556172",
+  "QA2": "QA2-26556172"
+}
+
+
+### GMCHeaderReport
+# @name GMCHeaderReport_PATCH
+PATCH {{server}}/odata/v4/report-data/GMCHeaderReport/26556172-aa1c-4b2e-8783-a6e20615402a
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "26556172-aa1c-4b2e-8783-a6e20615402a",
+  "createdAt": "2012-06-04T00:00:00.000Z",
+  "QADocumentNum": "QADocumentNum-26556172",
+  "ShiftTime": "ShiftTime-26556172",
+  "PalletNumber": "PalletNumber-26556172",
+  "JobworkPo": "JobworkPo-26556172",
+  "SONO": "SONO-26556172",
+  "CycleTime": "CycleTime-26556172",
+  "FromProcessNM": "FromProcessNM-26556172",
+  "VendorCode": "VendorCode-26556172",
+  "ContractNM": "ContractNM-26556172",
+  "Superviser1": "Superviser1-26556172",
+  "QA1Name": "QA1Name-26556172",
+  "ToProcessNM": "ToProcessNM-26556172",
+  "NContractCode": "NContractCode-26556172",
+  "NContractName": "NContractName-26556172",
+  "Superviser2": "Superviser2-26556172",
+  "SKU": "SKU-26556172",
+  "SFGDsc": "SFGDsc-26556172",
+  "GMCQty": 51.86,
+  "modifiedAt": "2012-04-29T00:00:00.000Z",
+  "Remarks": "Remarks-26556172",
+  "QA2": "QA2-26556172"
+}
+
+
+### GMCHeaderReport
+# @name GMCHeaderReport_DELETE
+DELETE {{server}}/odata/v4/report-data/GMCHeaderReport/26556172-aa1c-4b2e-8783-a6e20615402a
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

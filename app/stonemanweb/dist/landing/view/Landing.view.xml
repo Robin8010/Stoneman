@@ -1,0 +1,62 @@
+<mvc:View controllerName="landingcontroller.Landing"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+	    xmlns:f="sap.f"
+    xmlns:tnt="sap.tnt">
+    <Page id="page" title="{i18n>title}">
+    <ScrollContainer vertical="true" height="100%" id="scTop">	
+            <GenericTile id="gt1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="User Master"
+                subheader="Admin" press="ClickMe" url="https://www.sap.com/">
+                <TileContent id="tc1">
+                    <ImageContent id="ic1" src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
+                </TileContent>
+            </GenericTile>
+            <!-- <GenericTile id="gt2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Record Result"
+                subheader="Quality Control" press="ShowRecordResult" url="https://www.sap.com/">
+                <TileContent id="tc2">
+                    <ImageContent id="ic2" src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
+                </TileContent>
+            </GenericTile> -->
+             <GenericTile id="gt3" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Digital GMC"
+                subheader="SAP Quality Control" press="ShowGMC" url="https://www.sap.com/">
+                <TileContent id="tc3">
+                    <ImageContent id="ic3" src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
+                </TileContent>
+            </GenericTile>
+            <GenericTile id="gt4" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="User Mapping"
+                subheader="user vs plant" press="Showmapping" url="https://www.sap.com/" >
+                <TileContent id="tc4">
+                    <ImageContent id="ic4" src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
+                </TileContent>
+            </GenericTile>
+
+             <GenericTile id="gt5" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="DebitNote"
+                subheader="DebitNote" press="ShowDebitNote"  >
+                <TileContent id="tc5">
+                    <ImageContent id="ic5" src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
+                </TileContent>
+            </GenericTile>
+
+             <GenericTile id="gt6" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="GMC Report"
+                subheader="" press="ShowGMCReport"  >
+                <TileContent id="tc6">
+                    <ImageContent id="ic6" src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
+                </TileContent>
+            </GenericTile>
+             <GenericTile id="gt7"  class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Costing Confirmation sheet"
+                subheader="" press="ShowGMCReport"  >
+                <TileContent id="tc7">
+                    <ImageContent id="ic7" src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
+                </TileContent>
+            </GenericTile>
+             <GenericTile id="gt8"  class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="IBPC Entry"
+                subheader="" press="ShowIBPC"  >
+                <TileContent id="tc8">
+                    <ImageContent id="ic8" src="test-resources/sap/m/demokit/sample/GenericTileAsLaunchTile/images/SAPLogoLargeTile_28px_height.png" />
+                </TileContent>
+            </GenericTile>
+           
+
+	</ScrollContainer>    
+    </Page>
+</mvc:View>

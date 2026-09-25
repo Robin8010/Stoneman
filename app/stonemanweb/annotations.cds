@@ -1,0 +1,1 @@
+using UserMasterServices as service from '../../srv/service';

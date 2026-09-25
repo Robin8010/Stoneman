@@ -1,0 +1,48 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### SuperwiserMapping
+# @name SuperwiserMapping_GET
+GET {{server}}/odata/v4/superwiser-mapping/SuperwiserMapping
+Authorization: Basic {{username}}:{{password}}
+
+
+### SuperwiserMapping
+# @name SuperwiserMapping_POST
+POST {{server}}/odata/v4/superwiser-mapping/SuperwiserMapping
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "10838903-b621-49e6-a978-bbda52f7da03",
+  "Plant": "Plant-10838903",
+  "Storage": "Storage-10838903",
+  "Contractor": "Contractor-10838903",
+  "Superviser": "Superviser-10838903",
+  "Superviser_Username": "Superviser_Username-10838903"
+}
+
+
+### SuperwiserMapping
+# @name SuperwiserMapping_PATCH
+PATCH {{server}}/odata/v4/superwiser-mapping/SuperwiserMapping/10838903-b621-49e6-a978-bbda52f7da03
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "10838903-b621-49e6-a978-bbda52f7da03",
+  "Plant": "Plant-10838903",
+  "Storage": "Storage-10838903",
+  "Contractor": "Contractor-10838903",
+  "Superviser": "Superviser-10838903",
+  "Superviser_Username": "Superviser_Username-10838903"
+}
+
+
+### SuperwiserMapping
+# @name SuperwiserMapping_DELETE
+DELETE {{server}}/odata/v4/superwiser-mapping/SuperwiserMapping/10838903-b621-49e6-a978-bbda52f7da03
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

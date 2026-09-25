@@ -1,0 +1,48 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### QA1
+# @name QA1_GET
+GET {{server}}/odata/v4/qa1/QA1
+Authorization: Basic {{username}}:{{password}}
+
+
+### QA1
+# @name QA1_POST
+POST {{server}}/odata/v4/qa1/QA1
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "24549985-d15a-4e7d-a901-7df6f0ef9261",
+  "Plant": "Plant-24549985",
+  "Storage": "Storage-24549985",
+  "ToProcess": "ToProcess-24549985",
+  "QA1": "QA1-24549985",
+  "QA1_Username": "QA1_Username-24549985"
+}
+
+
+### QA1
+# @name QA1_PATCH
+PATCH {{server}}/odata/v4/qa1/QA1/24549985-d15a-4e7d-a901-7df6f0ef9261
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "24549985-d15a-4e7d-a901-7df6f0ef9261",
+  "Plant": "Plant-24549985",
+  "Storage": "Storage-24549985",
+  "ToProcess": "ToProcess-24549985",
+  "QA1": "QA1-24549985",
+  "QA1_Username": "QA1_Username-24549985"
+}
+
+
+### QA1
+# @name QA1_DELETE
+DELETE {{server}}/odata/v4/qa1/QA1/24549985-d15a-4e7d-a901-7df6f0ef9261
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

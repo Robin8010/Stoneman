@@ -1,0 +1,104 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### GMCHeader
+# @name GMCHeader_GET
+GET {{server}}/odata/v4/gmcheader-services/GMCHeader
+Authorization: Basic {{username}}:{{password}}
+
+
+### GMCHeader
+# @name GMCHeader_POST
+POST {{server}}/odata/v4/gmcheader-services/GMCHeader
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "21855312-d626-4fe3-92d1-7d168fb82054",
+  "GMCNo": "GMCNo-21855312",
+  "JobworkPo": "JobworkPo-21855312",
+  "SKU": "SKU-21855312",
+  "SONO": "SONO-21855312",
+  "ContractNM": "ContractNM-21855312",
+  "SuperwiserNM": "SuperwiserNM-21855312",
+  "FromProcess": "FromProcess-21855312",
+  "ToProcess": "ToProcess-21855312",
+  "ProductionAccountant": "ProductionAccountant-21855312",
+  "SFGDsc": "SFGDsc-21855312",
+  "POQty": 35.15,
+  "PlantNM": "PlantNM-21855312",
+  "FloorNM": "FloorNM-21855312",
+  "QANM": "QANM-21855312",
+  "GMCQty": 27.85,
+  "PlecesWeight": 96.3,
+  "QADocumentNum": "QADocumentNum-21855312",
+  "TotalWeight": 3.31,
+  "Remarks": "Remarks-21855312",
+  "NSuperwiserName": "NSuperwiserName-21855312",
+  "NQAName": "NQAName-21855312",
+  "NContractName": "NContractName-21855312",
+  "NPlantName": "NPlantName-21855312",
+  "NFloorName": "NFloorName-21855312",
+  "Creater": "Creater-21855312",
+  "FirstLevelStatus": "FirstLevelStatus-21855312",
+  "FirstLeverUser": "FirstLeverUser-21855312",
+  "FristLCommitDate": "2007-08-04",
+  "SecondLevelStatus": "SecondLevelStatus-21855312",
+  "SecondLevelUser": "SecondLevelUser-21855312",
+  "SecondLCommitDate": "2000-01-06",
+  "IsDocumentreadyForPosting": true,
+  "DocumentPosted": true
+}
+
+
+### GMCHeader
+# @name GMCHeader_PATCH
+PATCH {{server}}/odata/v4/gmcheader-services/GMCHeader/21855312-d626-4fe3-92d1-7d168fb82054
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "21855312-d626-4fe3-92d1-7d168fb82054",
+  "GMCNo": "GMCNo-21855312",
+  "JobworkPo": "JobworkPo-21855312",
+  "SKU": "SKU-21855312",
+  "SONO": "SONO-21855312",
+  "ContractNM": "ContractNM-21855312",
+  "SuperwiserNM": "SuperwiserNM-21855312",
+  "FromProcess": "FromProcess-21855312",
+  "ToProcess": "ToProcess-21855312",
+  "ProductionAccountant": "ProductionAccountant-21855312",
+  "SFGDsc": "SFGDsc-21855312",
+  "POQty": 35.15,
+  "PlantNM": "PlantNM-21855312",
+  "FloorNM": "FloorNM-21855312",
+  "QANM": "QANM-21855312",
+  "GMCQty": 27.85,
+  "PlecesWeight": 96.3,
+  "QADocumentNum": "QADocumentNum-21855312",
+  "TotalWeight": 3.31,
+  "Remarks": "Remarks-21855312",
+  "NSuperwiserName": "NSuperwiserName-21855312",
+  "NQAName": "NQAName-21855312",
+  "NContractName": "NContractName-21855312",
+  "NPlantName": "NPlantName-21855312",
+  "NFloorName": "NFloorName-21855312",
+  "Creater": "Creater-21855312",
+  "FirstLevelStatus": "FirstLevelStatus-21855312",
+  "FirstLeverUser": "FirstLeverUser-21855312",
+  "FristLCommitDate": "2007-08-04",
+  "SecondLevelStatus": "SecondLevelStatus-21855312",
+  "SecondLevelUser": "SecondLevelUser-21855312",
+  "SecondLCommitDate": "2000-01-06",
+  "IsDocumentreadyForPosting": true,
+  "DocumentPosted": true
+}
+
+
+### GMCHeader
+# @name GMCHeader_DELETE
+DELETE {{server}}/odata/v4/gmcheader-services/GMCHeader/21855312-d626-4fe3-92d1-7d168fb82054
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

@@ -1,0 +1,201 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### IBPC_Head
+# @name IBPC_Head_GET
+GET {{server}}/odata/v4/ibpsservices/IBPC_Head
+Authorization: Basic {{username}}:{{password}}
+
+
+### IBPC_Head
+# @name IBPC_Head_POST
+POST {{server}}/odata/v4/ibpsservices/IBPC_Head
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "17040384-5e5c-4c42-a6f6-3ab169eb1cb7",
+  "Buyer": "Buyer-17040384",
+  "SalesOrderNo": "SalesOrderNo-17040384",
+  "ItemCode": "ItemCode-17040384",
+  "ItemName": "ItemName-17040384",
+  "CadNo": "CadNo-17040384",
+  "PkgUnit": "PkgUnit-17040384",
+  "Date": "Date-17040384",
+  "IBPC_LineNo": [
+    {
+      "ID": "31672702-85a9-4492-bd63-3bd71dac9ac7",
+      "INTComponentCode": "INTComponentCode-31672702",
+      "INTDescription": "INTDescription-31672702",
+      "INTQuantity": 37035745572.84916,
+      "INTUom": "INTUom-31672702",
+      "INTRemarks": "INTRemarks-31672702",
+      "SAMComponentCode": "SAMComponentCode-31672702",
+      "SAMDescription": "SAMDescription-31672702",
+      "SAMQuantity": 250407545771.46503,
+      "SAMUom": "SAMUom-31672702",
+      "ADMRemarks": "ADMRemarks-31672702",
+      "ALLComponentCode": "ALLComponentCode-31672702",
+      "ALLDescription": "ALLDescription-31672702",
+      "ALLQuantity": 134127782184.84602,
+      "ALLUom": "ALLUom-31672702",
+      "ALLRemarks": "ALLRemarks-31672702",
+      "EDIComponentCode": "EDIComponentCode-31672702",
+      "EDIDescription": "EDIDescription-31672702",
+      "EDIQuantity": 553474190802.5948,
+      "EDIUom": "EDIUom-31672702",
+      "EDIRemarks": "EDIRemarks-31672702",
+      "createdAt": "2005-07-29T00:00:00.000Z",
+      "createdBy": "createdBy.iuuta@example.net",
+      "modifiedAt": "2001-01-16T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.iuuta@example.com"
+    }
+  ],
+  "createdAt": "2003-04-26T00:00:00.000Z",
+  "createdBy": "createdBy.a58g0@example.org",
+  "modifiedAt": "2001-02-14T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.a58g0@example.org"
+}
+
+
+### IBPC_Head
+# @name IBPC_Head_PATCH
+PATCH {{server}}/odata/v4/ibpsservices/IBPC_Head/17040384-5e5c-4c42-a6f6-3ab169eb1cb7
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "17040384-5e5c-4c42-a6f6-3ab169eb1cb7",
+  "Buyer": "Buyer-17040384",
+  "SalesOrderNo": "SalesOrderNo-17040384",
+  "ItemCode": "ItemCode-17040384",
+  "ItemName": "ItemName-17040384",
+  "CadNo": "CadNo-17040384",
+  "PkgUnit": "PkgUnit-17040384",
+  "Date": "Date-17040384",
+  "IBPC_LineNo": [
+    {
+      "ID": "31672702-85a9-4492-bd63-3bd71dac9ac7",
+      "INTComponentCode": "INTComponentCode-31672702",
+      "INTDescription": "INTDescription-31672702",
+      "INTQuantity": 37035745572.84916,
+      "INTUom": "INTUom-31672702",
+      "INTRemarks": "INTRemarks-31672702",
+      "SAMComponentCode": "SAMComponentCode-31672702",
+      "SAMDescription": "SAMDescription-31672702",
+      "SAMQuantity": 250407545771.46503,
+      "SAMUom": "SAMUom-31672702",
+      "ADMRemarks": "ADMRemarks-31672702",
+      "ALLComponentCode": "ALLComponentCode-31672702",
+      "ALLDescription": "ALLDescription-31672702",
+      "ALLQuantity": 134127782184.84602,
+      "ALLUom": "ALLUom-31672702",
+      "ALLRemarks": "ALLRemarks-31672702",
+      "EDIComponentCode": "EDIComponentCode-31672702",
+      "EDIDescription": "EDIDescription-31672702",
+      "EDIQuantity": 553474190802.5948,
+      "EDIUom": "EDIUom-31672702",
+      "EDIRemarks": "EDIRemarks-31672702",
+      "createdAt": "2005-07-29T00:00:00.000Z",
+      "createdBy": "createdBy.iuuta@example.net",
+      "modifiedAt": "2001-01-16T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.iuuta@example.com"
+    }
+  ],
+  "createdAt": "2003-04-26T00:00:00.000Z",
+  "createdBy": "createdBy.a58g0@example.org",
+  "modifiedAt": "2001-02-14T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.a58g0@example.org"
+}
+
+
+### IBPC_Head
+# @name IBPC_Head_DELETE
+DELETE {{server}}/odata/v4/ibpsservices/IBPC_Head/17040384-5e5c-4c42-a6f6-3ab169eb1cb7
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### IBPC_Line
+# @name IBPC_Line_GET
+GET {{server}}/odata/v4/ibpsservices/IBPC_Line
+Authorization: Basic {{username}}:{{password}}
+
+
+### IBPC_Line
+# @name IBPC_Line_POST
+POST {{server}}/odata/v4/ibpsservices/IBPC_Line
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "31672702-85a9-4492-bd63-3bd71dac9ac7",
+  "INTComponentCode": "INTComponentCode-31672702",
+  "INTDescription": "INTDescription-31672702",
+  "INTQuantity": 37035745572.84916,
+  "INTUom": "INTUom-31672702",
+  "INTRemarks": "INTRemarks-31672702",
+  "SAMComponentCode": "SAMComponentCode-31672702",
+  "SAMDescription": "SAMDescription-31672702",
+  "SAMQuantity": 250407545771.46503,
+  "SAMUom": "SAMUom-31672702",
+  "ADMRemarks": "ADMRemarks-31672702",
+  "ALLComponentCode": "ALLComponentCode-31672702",
+  "ALLDescription": "ALLDescription-31672702",
+  "ALLQuantity": 134127782184.84602,
+  "ALLUom": "ALLUom-31672702",
+  "ALLRemarks": "ALLRemarks-31672702",
+  "EDIComponentCode": "EDIComponentCode-31672702",
+  "EDIDescription": "EDIDescription-31672702",
+  "EDIQuantity": 553474190802.5948,
+  "EDIUom": "EDIUom-31672702",
+  "EDIRemarks": "EDIRemarks-31672702",
+  "createdAt": "2005-07-29T00:00:00.000Z",
+  "createdBy": "createdBy.iuuta@example.net",
+  "modifiedAt": "2001-01-16T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.iuuta@example.com"
+}
+
+
+### IBPC_Line
+# @name IBPC_Line_PATCH
+PATCH {{server}}/odata/v4/ibpsservices/IBPC_Line/31672702-85a9-4492-bd63-3bd71dac9ac7
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "31672702-85a9-4492-bd63-3bd71dac9ac7",
+  "INTComponentCode": "INTComponentCode-31672702",
+  "INTDescription": "INTDescription-31672702",
+  "INTQuantity": 37035745572.84916,
+  "INTUom": "INTUom-31672702",
+  "INTRemarks": "INTRemarks-31672702",
+  "SAMComponentCode": "SAMComponentCode-31672702",
+  "SAMDescription": "SAMDescription-31672702",
+  "SAMQuantity": 250407545771.46503,
+  "SAMUom": "SAMUom-31672702",
+  "ADMRemarks": "ADMRemarks-31672702",
+  "ALLComponentCode": "ALLComponentCode-31672702",
+  "ALLDescription": "ALLDescription-31672702",
+  "ALLQuantity": 134127782184.84602,
+  "ALLUom": "ALLUom-31672702",
+  "ALLRemarks": "ALLRemarks-31672702",
+  "EDIComponentCode": "EDIComponentCode-31672702",
+  "EDIDescription": "EDIDescription-31672702",
+  "EDIQuantity": 553474190802.5948,
+  "EDIUom": "EDIUom-31672702",
+  "EDIRemarks": "EDIRemarks-31672702",
+  "createdAt": "2005-07-29T00:00:00.000Z",
+  "createdBy": "createdBy.iuuta@example.net",
+  "modifiedAt": "2001-01-16T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.iuuta@example.com"
+}
+
+
+### IBPC_Line
+# @name IBPC_Line_DELETE
+DELETE {{server}}/odata/v4/ibpsservices/IBPC_Line/31672702-85a9-4492-bd63-3bd71dac9ac7
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

@@ -1,25 +1,32 @@
 {
-  "welcomeFile": "/testui/index.html",
-  "authenticationMethod": "none",
-  "routes": [
-    {
-      "source": "^/testui/(.*)$",
-      "target": "$1",
-      "destination": "ui5",
-      "authenticationType": "none"
-    },
-     {
-      "source": "^/testui/(.*)$",
-      "target": "$1",
-      "service": "html5-apps-repo-rt",
-      "authenticationType": "none"
-    },
-    {
-      "source": "^/(.*)$",
-      "target": "$1",
-      "destination": "srv-api",
-      "authenticationType": "none",
-      "csrfProtection": false
-    }
-  ]
+ "welcomeFile": "/stonemanweb",
+ "authenticationMethod": "none",
+ "routes": [
+  {
+   "source": "^/stoneamanweb/(.*)$",
+   "target": "$1",
+   "destination": "ui5",
+   "authenticationType": "none"
+  },
+  {
+   "source": "^/stonemanweb/(.*)$",
+   "target": "$1",
+   "service": "html5-apps-repo-rt",
+   "authenticationType": "none"
+  },
+  {
+   "source": "^/sap/(.*)$",
+   "target": "$1",
+   "destination": "S4HANA_LIVE",
+   "authenticationType": "none",
+   "csrfProtection": true
+  },
+  {
+   "source": "^/(.*)$",
+   "target": "$1",
+   "destination": "srv-api",
+   "authenticationType": "none",
+   "csrfProtection": false
+  }
+ ]
 }

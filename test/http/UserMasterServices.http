@@ -1,0 +1,56 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### UserMasterT
+# @name UserMasterT_GET
+GET {{server}}/odata/v4/user-master-services/UserMasterT
+Authorization: Basic {{username}}:{{password}}
+
+
+### UserMasterT
+# @name UserMasterT_POST
+POST {{server}}/odata/v4/user-master-services/UserMasterT
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "20278652-d360-45f4-94e6-11363e613e3e",
+  "username": "username-20278652",
+  "password": "password-20278652",
+  "IsAdmin": true,
+  "ManagGMC": true,
+  "IsSuperwiser": true,
+  "IsProductionAccount": true,
+  "L1Approver": true,
+  "L2Approver": true,
+  "ISActive": true
+}
+
+
+### UserMasterT
+# @name UserMasterT_PATCH
+PATCH {{server}}/odata/v4/user-master-services/UserMasterT/20278652-d360-45f4-94e6-11363e613e3e
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "20278652-d360-45f4-94e6-11363e613e3e",
+  "username": "username-20278652",
+  "password": "password-20278652",
+  "IsAdmin": true,
+  "ManagGMC": true,
+  "IsSuperwiser": true,
+  "IsProductionAccount": true,
+  "L1Approver": true,
+  "L2Approver": true,
+  "ISActive": true
+}
+
+
+### UserMasterT
+# @name UserMasterT_DELETE
+DELETE {{server}}/odata/v4/user-master-services/UserMasterT/20278652-d360-45f4-94e6-11363e613e3e
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

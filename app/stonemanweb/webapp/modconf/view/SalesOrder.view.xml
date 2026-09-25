@@ -1,0 +1,409 @@
+<mvc:View xmlns:smartfield="sap.ui.comp.smartfield" xmlns:odata="sap.ui.comp.odata"
+    xmlns:cards="sap.f.cards"
+    controllerName="modconfcontroller.SalesOrder"
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:T="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+	xmlns:a="sap.ui.core.Control"
+>
+    <Page
+        id="_SalesOrder_Form"
+        class="sapUiFioriObjectPage" title=""
+        showHeader="true" showNavButton="true" navButtonPress=".navBack"
+    >
+        <content>
+            <f:SimpleForm
+                id="_SalesOrder"
+                maxContainerCols="2"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="SalesOrder"
+                labelSpanL="4"
+                labelSpanM="4"
+                emptySpanL="0"
+                emptySpanM="0"
+                columnsL="2"
+                columnsM="1"
+                validateFieldGroup="onValidateFieldGroup"
+            >
+                <f:content>
+                    <core:Title text="" />
+                    <Label text="CardCode" />
+                    <Input
+                        fieldGroupIds=" "
+                        value=""
+                        id="iCardCode"
+                    />
+
+                    <Label text="CardName" />
+                    <Input
+                        fieldGroupIds=" "
+                        value=""
+                        id="iCardName"
+                    />
+
+                    <Label text="Contact Person" />
+                    <Input
+                        fieldGroupIds=" "
+                        value=""
+                        id="ContPer"
+                    />
+
+                    <Label text="Customer Po Ref" />
+                    <Input
+                        fieldGroupIds=" "
+                        value=""
+                        id="iCustomerPo"
+                    />
+
+                    <Label text="Currency" />
+                    <Input
+                        fieldGroupIds=" "
+                        value=""
+                        id="iCurrency"
+                    />
+                    <Input
+                        value=""
+                        id="Currency"
+                    >
+                        <layoutData>
+                            <l:GridData span="L3 M3 S4" />
+                        </layoutData>
+                    </Input>
+
+                    <core:Title text="" />
+                    <Label
+                        text="Series"
+                        labelFor="lblSeries"
+                    />
+                    <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder="Choose Series..."
+                        value=""
+                        id="CmbSeries"
+                    >
+                        <items>
+                            <core:Item text="Primary" />
+                            <core:Item text="Secondry" />
+                        </items>
+                    </ComboBox>
+                    <Input
+                        value="{/someParam}"
+                        id="iSeries"
+                    >
+                        <layoutData>
+                            <l:GridData span="L3 M3 S4" />
+                        </layoutData>
+                    </Input>
+
+                    <Label
+                        text="Status"
+                        labelFor="lblStatus"
+                    />
+                    <ComboBox
+                        fieldGroupIds=""
+                        width="100%"
+                        placeholder="Select Status"
+                    >
+                        <items>
+                            <core:Item text="Open" />
+                            <core:Item text="Close" />
+                        </items>
+                    </ComboBox>
+                    <Label
+                        text="PostinfDate"
+                        labelFor="lblPDate"
+                    />
+                    <DateTimePicker
+                        id="DTI2"
+                        placeholder="Select Date"
+                    />
+                    <Label
+                        text="DeliveryDate"
+                        labelFor="DTI3"
+                    />
+                    <DateTimeInput
+                        id="DTI3"
+                        type="DateTime"
+                        placeholder="Enter Date &amp; Time"
+                    />
+                    <Label
+                        text="Customer Po Date"
+                        labelFor="DTP1"
+                    />
+                    <DateTimePicker
+                        id="DTP1"
+                        width="100%"
+                        placeholder="Enter Date &amp; Time"
+                        class="sapUiSmallMarginBottom"
+                    />
+                </f:content>
+            </f:SimpleForm>
+
+            <IconTabBar
+                id="idIconTabBarMulti"
+                expanded="{device>/isNoPhone}"
+                class="sapUiResponsiveContentPadding"
+            >
+                <items>
+                    <IconTabFilter text="Contents"  selected="true">
+                      
+                        <Table  class="sapUiSizeCompact  textAlignCenter" inset="true" sticky="ColumnHeaders,HeaderToolbar" showSeparators="All" showNoData="true" id="DetailTable">
+                                    <columns>
+                                        <Column width="10rem">
+                                            <Label text="Control Name" labelFor="ControlName" />
+                                        </Column>
+                                        <Column width="10rem">
+                                            <Label text="Control Id" labelFor="ControlId" />
+                                        </Column>
+                                        <Column width="4rem">
+                                            <Label text="Add" />
+                                        </Column>
+                                        <Column width="4rem">
+                                            <Label text="Delete" />
+                                        </Column>
+                                         <!-- <Column width="4rem">
+                                            <Label text="Action" />
+                                        </Column> -->
+                                        <Column width="4rem">
+                                         
+                                        </Column> 
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem vAlign="Middle">
+                                            <cells>
+                                                <Input id="ControlName" required="true"  placeholder="Control Name" value="{EntryFormDataSourceModel>ControlName}" fieldWidth="10%" class="labelHeight" />
+                                                <Input id="ControlId" required="true"  placeholder="Control Id" value="{EntryFormDataSourceModel>ControlId}" fieldWidth="100%" class="labelHeight" />
+                                                <!-- <CheckBox id="sEnabled" selected="{EntryFormDataSourceModel>Enabled}" enabled="true" />
+                                                <CheckBox id="sActive" selected="{EntryFormDataSourceModel>sActive}" enabled="true" /> -->
+                                                <Button icon="sap-icon://add" press="onAddControlDetail" />
+                                                    <Button icon="sap-icon://delete" press="onDeleteControlDetail" />
+                                                      <Button  text="Action" press="onClick" />
+                                                
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                        
+                    </IconTabFilter>
+
+                    <IconTabFilter text="Logistics">
+                   <content>
+            <f:SimpleForm 
+                 id="_SalesOrder1"
+                maxContainerCols="2"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="SalesOrder"
+                labelSpanL="4"
+                labelSpanM="4"
+                emptySpanL="0"
+                emptySpanM="0"
+                columnsL="3"
+                columnsM="1"
+                validateFieldGroup="onValidateFieldGroup"
+            >
+                <f:content >
+                
+                	 <core:Title text=""  />
+                   <Label id="BillTo"  text="BillTo"  />
+                     <Input id="tBillTo" value="" enabled="true" >
+                      <layoutData>
+                            <l:GridData span="L5 M5 S4" />
+                        </layoutData>
+                     </Input>
+                      <Label id="ShipTo" text="ShipTo"  />
+                     <Input id="tShipTo" value=""  enabled="true" >
+                     <layoutData>
+                            <l:GridData span="L5 M5 S4" />
+                        </layoutData>
+                     </Input>
+                      <Label id="Shiping" text="ShipingType"  />
+                      <ComboBox
+                        fieldGroupIds=""
+                        placeholder="Choose Series..."
+                        value=""
+                        id="CmbSeriesd">
+                         <layoutData>
+                            <l:GridData span="L5 M5 S4" />
+                        </layoutData>
+                    </ComboBox>
+
+
+
+
+                     <core:Title text="" />
+                   <Label id="BillToh" text="PrintPicking Sheet"  />
+                   <CheckBox>
+                    <layoutData>
+                            <l:GridData span="L5 M5 S4" />
+                        </layoutData>
+                   </CheckBox>
+                     
+                      <Label id="ShipToh" text="Allow partialDelivery"  />
+                    	<RadioButtonGroup id="groupE" valueState="Information">
+					<RadioButton text="Yes" selected="true" />
+					<RadioButton text="No" />
+				
+                      <layoutData>
+                            <l:GridData span="L5 M5 S4" />
+                        </layoutData>
+                     </RadioButtonGroup>
+                     
+                      <Label id="Shipingh" text="Bp Channal Name"  />
+                      <Input value="" enabled="true">
+                       <layoutData>
+                            <l:GridData span="L5 M5 S4" />
+                        </layoutData>
+                      </Input>
+
+                       <core:Title text="" />
+                   <Label id="BillTohg" text="PrintPicking Sheet"  />
+                   <CheckBox>
+                    <layoutData>
+                            <l:GridData span="L5 M5 S4" />
+                        </layoutData>
+                   </CheckBox>
+                     
+                      <Label id="ShipTohg" text="Allow partialDelivery"  />
+                     <CheckBox>
+                      <layoutData>
+                            <l:GridData span="L5 M5 S4" />
+                        </layoutData>
+                        </CheckBox>
+                     
+                      <Label id="Shipinghg" text="Bp Channal Name"  />
+                      <Input value="" enabled="true">
+                       <layoutData>
+                            <l:GridData span="L5 M5 S4" />
+                        </layoutData>
+                        </Input>
+
+
+
+                          <core:Title text="" />
+                   <Label id="BillTohgf" text="Remarks "  />
+                   <TextArea value="Lorem ipsum dolor sit amet, consectetur el" maxLength="40" width="100%"/>
+                    <Label id="BillTohgfd" text="Remarks "  />
+                 <TextArea value="Lorem ipsum dolor st amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat" rows="8" />
+                   
+                       <core:Title text="" />
+                   	<PDFViewer class="sapUiSmallMarginEnd" source="{/Source}" title="{/Title1}" height="{/Height}" width="auto" isTrustedSource="true">
+					<layoutData>
+						<FlexItemData growFactor="1"/>
+					</layoutData>
+				</PDFViewer>
+				<PDFViewer class="sapUiSmallMarginBegin" source="{/Source}" title="{/Title2}" height="{/Height}" width="auto">
+					<layoutData>
+						<FlexItemData growFactor="1"/>
+					</layoutData>
+				</PDFViewer>
+                    	
+                     
+                    </f:content>
+                    </f:SimpleForm>
+
+                </content>
+                    </IconTabFilter>
+
+                    <IconTabFilter text="Attechment">
+                       	<UploadCollection
+			id="UploadCollection"
+			maximumFilenameLength="55"
+			maximumFileSize="10"
+			multiple="true"
+			sameFilenameAllowed="true"
+			instantUpload="false"
+            uploadUrl="./modconf/File"
+			noDataDescription="Drop files or use the &quot;Add&quot; button to keep files ready for upload"
+			change="onChange"
+			fileDeleted="onFileDeleted"
+			filenameLengthExceed="onFilenameLengthExceed"
+			fileSizeExceed="onFileSizeExceed"
+			typeMissmatch="onTypeMissmatch"
+			uploadComplete="onUploadComplete"
+			beforeUploadStarts="onBeforeUploadStarts" />
+		<Button id="Button" text="Upload Now" press="onStartUpload" />
+                    </IconTabFilter>
+
+                     <IconTabFilter text="Excel Uploader">
+                     <Bar>
+                     <contentRight>
+                   <u:FileUploader id="FileUploaderId" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx"
+									icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUpload"/>
+                                    </contentRight>
+                                    </Bar>
+
+                                    <content>
+						<Table id="tbl12" items="{localModel>/items}">
+							<columns>
+                            <Column>
+									<Label text="Select"/>
+								</Column>
+								<Column>
+									<Label text="Name"/>
+								</Column>
+								<Column>
+									<Label text="Age"/>
+								</Column>
+								<Column>
+									<Label text="Job"/>
+								</Column>
+								<Column>
+									<Label text="Address"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+                                    <CheckBox />
+										<Text text="{localModel>Name}"/>
+										<Text text="{localModel>Age}"/>
+										<Text text="{localModel>Job}"/>
+										<Text text="{localModel>Address}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+        <footer>
+            <Toolbar>
+                <content>
+                    <Button
+                        id="submit"
+                        text="Submit"
+                        press="onAccept"
+                        type="Accept"
+                        width="10%"
+                    />
+                    <Button
+                        id="reset"
+                        text="Reset"
+                        press="onReset"
+                        type="Reject"
+                        width="10%"
+                    />
+                    <Button
+                        id="cancel"
+                        text="Cancel"
+                        press="onCancel"
+                        width="10%"
+                    />
+
+                    <Button text="Correctly Displayed" press="onExportToPDF"/>
+                </content>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

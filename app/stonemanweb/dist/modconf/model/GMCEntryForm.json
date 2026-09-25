@@ -1,0 +1,140 @@
+{
+      "ID": "",
+      "GMCNo": "",
+      "JobworkPo": "",
+      "SKU": "",
+      "SONO": "",
+      "ContractNM": "",
+      "ManualSalesOrderItemCode": "",
+      "SuperwiserNM": "",
+      "FromProcess": "",
+      "FromProcessNM": null,
+      "VendorCode":null,
+      "ToProcessNM":null,
+      "PODescription":null,
+      "NContractCode":null,
+      "ToProcess": "",
+      "ProductionAccountant": "",
+      "SFGDsc": "",
+      "POQty": "",
+      "PlantNM": "",
+      "FloorNM": "",
+      "CycleTime":"",
+      "PalletNumber":"",
+      "ShiftTime":"",
+       "ToShiftTime":"",
+      "QANM": "",
+      "InspectionType":"",
+      "GMCQty": 0.00,
+      "PlecesWeight": 0.00,
+      "QADocumentNum": "",
+      "TotalWeight": 0.00,
+      "Remarks": "",
+      "NSuperwiserName": "",
+      "NQAName": "",
+      "NContractName": "",
+      "NPlantName": "",
+      "NFloorName": "",
+      "Creater":"",
+      "StatusRemarks":"",
+      "FirstLevelStatus":"",
+      "FirstLeverUser":"",
+      "SecondLevelStatus":"",
+      "SecondLevelUser":"",
+      "ContractorList":[
+            {
+                  "Supplier": "",
+                  "SupplierFullName":""
+            }
+      ],
+      "InspectionTypeList":[
+            {
+                  "Code": "",
+                  "Name":""
+            }
+      ],
+      "ProdAccountantList": [
+           {
+                  "Prodteam": "",
+                  "Prodteam_Username": ""
+            }  
+      ],
+      "StoragelocationList": [
+            {
+                  "StorageLocation": "",
+                  "StorageLocationName": ""
+            }
+      ],
+      "QAListL1": [
+            {
+                  "QA1": "",
+                  "QA1_Username": ""
+            }
+      ],
+      
+      "QAListL2": [
+            {
+                 "QA1": "",
+                  "QA1_Username": ""
+            }
+      ],
+        "PlantList": [
+            {
+                  "Plant": "",
+                  "PlantName": ""
+            }
+      ],
+       "NPlantList": [
+            {
+                  "Plant": "",
+                  "PlantName": ""
+            }
+      ],
+      "floorList":[
+            {
+                  "StorageLocation": "",
+                  "StorageLocationName": ""
+            }
+      ],
+      "NSuperwiserNameList": [
+            {
+                  "Superviser": "",
+                  "Superviser_Username": ""   
+            }
+      ],
+      "NQAList": [],
+      "FromProcessCombo": [
+            {
+                  "Code": "",
+                  "text": ""
+            }
+      ],
+      "ToProcessList": [
+           {
+                  "Code": "",
+                  "text": ""
+            }
+      ],
+      "ShiftTimeList": [
+                     {
+                        "Code": "0",
+                        "Name": "General"
+                    },
+                    {
+                       "Code": "1",
+                        "Name": "First"
+                    },
+                    { 
+                        "Code": "2",
+                        "Name": "Second"
+                    }
+                  ],
+      "BtnRejectEnable":true,
+      "BtnApproveEnable":true,
+      "FieldEnable":true,
+       "AsSuperwiserEnable":true,
+        "IsDocumentreadyForPosting":false,
+       "DocumentPosted":false
+
+      
+}

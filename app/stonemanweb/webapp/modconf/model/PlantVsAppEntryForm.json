@@ -1,0 +1,61 @@
+
+ [     
+{
+      "ID": "",
+      "Plant": "",
+      "Storage": "",
+      "ToProcess": "",
+      "Contractor": "",
+      "Superviser": "",
+      "QA1": "",
+      "QA2": "",
+      "Prodteam": "" ,
+      "Shift":"",
+       "PlantList": [
+            {
+                  "Plant": "",
+                  "PlantName": ""
+            }
+      ],
+     "ContractorList":[
+            {
+                  "Supplier": "",
+                  "SupplierFullName":""
+            }
+      ],
+        "SuperwiserNameList": [
+            {
+                  "ID": "",
+                  "Description": ""   
+            }
+      ],
+    
+      "StoragelocationList": [
+            {
+                  "StorageLocation": "",
+                  "StorageLocationName": ""
+            }
+      ],
+      "QAListL1": [
+            {
+                  "ID": "",
+                  "Description": ""
+            }
+      ],
+      "ProductList": [
+            {
+                   "ID": "",
+                  "Description": ""
+            }
+      ],
+      "ToProcessList":[
+            {
+                  "Code": "",
+                  "text": ""
+            }
+      ]
+     
+
+      
+}
+ ]

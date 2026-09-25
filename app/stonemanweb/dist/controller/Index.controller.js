@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller"],o=>{"use strict";return o.extend("stonemanweb.controller.Index",{onInit(){var o=sap.ui.core.UIComponent.getRouterFor(this);o.navTo("LoginPage")},onMove:function(){var o=sap.ui.core.UIComponent.getRouterFor(this);o.navTo("LoginPage")}})});
+//# sourceMappingURL=Index.controller.js.map

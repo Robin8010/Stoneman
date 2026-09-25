@@ -1,0 +1,1 @@
+{"version":3,"file":"dashboard.controller.js","names":["sap","ui","define","Controller","JSONModel","WebService","UIComponent","that","extend","onInit"],"sources":["dashboard-dbg.controller.js"],"mappings":"AAAAA,IAAIC,GAAGC,OAAO,CACX,6BACA,8BACA,wBACA,2BAEA,SAAUC,EAAYC,EAAWC,EAAWC,GAC5C,IAAIC,EACJ,aAEA,OAAOJ,EAAWK,OAAO,8BAA+B,CAErDC,OAAQ,WAGR,GAEN","ignoreList":[]}

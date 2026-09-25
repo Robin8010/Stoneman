@@ -1,0 +1,217 @@
+<mvc:View
+    controllerName="modconfcontroller.GoodsReport"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    height="100%">
+
+    <Page
+        id="_GoodsReport"
+        title="Goods Report"
+        showNavButton="true"
+        navButtonPress=".navBack">
+
+        <content>
+
+            <f:SimpleForm
+                id="_GoodsReportForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="Goods Report">
+
+                <Toolbar>
+                    <SearchField
+                        placeholder="Search Name"
+                        width="30%"
+                        liveChange="onSearch"/>
+
+                          <DatePicker
+    id="Fromdate"
+    placeholder="From Date"
+    width="30%"
+    displayFormat="dd.MM.yyyy"
+    valueFormat="yyyy-MM-dd" />
+
+<DatePicker
+    id="Todate"
+    placeholder="To Date"
+    width="30%"
+    displayFormat="dd.MM.yyyy"
+    valueFormat="yyyy-MM-dd" />
+
+<Button
+    type="Accept"
+    text="Go"
+    press="onGo" />
+                    <ToolbarSpacer/>
+                </Toolbar>
+
+                <ScrollContainer
+                    width="100%"
+                    height="300px"
+                    horizontal="true"
+                    vertical="true">
+
+                    <Table
+                        id="_GMCReportTbl"
+                        items="{GMCData>/value}"
+                       
+                     width="100%"
+                           growing="true"
+                           growingScrollToLoad="true"
+                         
+
+                        class="sapUiSizeCompact"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        showSeparators="All"
+                        showNoData="true"
+                        growingThreshold="5"
+                        enableBusyIndicator="true"
+                        alternateRowColors="true"
+                        headerLevel="Auto"
+                        backgroundDesign="Translucent">
+
+                    <columns>
+   
+    <Column minScreenWidth="Tablet" demandPopin="false" width="8rem">
+        <Label text="GMC No." />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="10rem">
+        <Label text="GMC Date" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="10rem">
+        <Label text="Create Time" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="9rem">
+        <Label text="GMC Quantity" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="9rem">
+        <Label text="Cycle Time" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="13rem">
+        <Label text="Sale Order Number" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="10rem">
+        <Label text="Style Number" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="13rem">
+        <Label text="Purchase Order No." />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="9rem">
+        <Label text="Vendor Code" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="12rem">
+        <Label text="Vendor Name" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="10rem">
+        <Label text="Item Code" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="12rem">
+        <Label text="Item Description" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="15rem">
+        <Label text="Full Item Description" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="12rem">
+        <Label text="From Process" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="12rem">
+        <Label text="Supervisor Name" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="10rem">
+        <Label text="QA Name" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="12rem">
+        <Label text="To Process" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="14rem">
+        <Label text="To Process Vendor Code" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="14rem">
+        <Label text="To Process Vendor Name" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="14rem">
+        <Label text="To Process Supervisor" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="12rem">
+        <Label text="To Process QA" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="16rem">
+        <Label text="Quality-01 Approval Status" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="17rem">
+        <Label text="Supervisor-02 Approval Status" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="16rem">
+        <Label text="Quality-02 Approval Status" />
+    </Column>
+    <Column minScreenWidth="Tablet" demandPopin="false" width="15rem">
+        <Label text="Production Accountant" />
+    </Column>
+    
+</columns>
+
+<items>
+    <ColumnListItem>
+        <cells>
+            
+            <Text text="{GMCData>GMCNo}" />
+            <Text text="{GMCData>createdAt}" />
+            <Text text="{GMCData>createdAt}" />
+            <Text text="{GMCData>GMCQty}" />
+            <Text text="{GMCData>CycleTime}" />
+            <Text text="{GMCData>SONO}" />
+            <Text text="{GMCData>ManualSalesOrderItemCode}" />
+            <Text text="{GMCData>JobworkPo}" />
+            <Text text="{GMCData>VendorCode}" />
+            <Text text="{GMCData>ContractNM}" />
+            <Text text="{GMCData>SKU}" />
+            <Text text="{GMCData>SFGDsc}" />
+            <Text text="{GMCData>PODescription}" />
+            <Text text="{GMCData>FromProcessNM}" />
+            <Text text="{GMCData>SuperwiserNM}" />
+            <Text text="{GMCData>QANM}" />
+            <Text text="{GMCData>ToProcessNM}" />
+            <Text text="{GMCData>NContractCode}" />
+            <Text text="{GMCData>NContractName}" />
+            <Text text="{GMCData>NSuperwiserName}" />
+            <Text text="{GMCData>NQAName}" />
+            <Text text="{GMCData>FirstLevelStatus}" />
+           <Text text="{GMCData>SuperwiserStatus}" />
+            <Text text="{GMCData>SecondLevelStatus}" />
+            <Text text="{GMCData>SecondLevelUser}" />
+            <Text text="{GMCData>ProductionAccountant}" />
+            <Button icon="sap-icon://print" type="Transparent" press="OnPrint" />
+        </cells>
+    </ColumnListItem>
+</items>
+
+                    </Table>
+
+                </ScrollContainer>
+
+            </f:SimpleForm>
+
+        </content>
+
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                 <Button
+                        id="_Print"
+                        text="Export"
+                        press="OnExport"
+                        type="Accept"
+                       
+                        
+                    />
+                <Button
+                    id="cancel11"
+                    text="Cancel"
+                    press="onCancel"/>
+            </Toolbar>
+        </footer>
+
+    </Page>
+
+</mvc:View>

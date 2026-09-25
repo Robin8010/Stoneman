@@ -1,0 +1,31 @@
+{
+      "ID": "",
+      "username": "",
+      "Description":"",
+      "password": "",
+      "IsAdmin": null,
+      "ManagGMC": null,
+      "IsSuperwiser": null,
+      "IsProductionAccount": null,
+      "L1Approver": null,
+      "L2Approver": null,
+      "Contractor":null,
+      "L1ApproverList": [
+            {
+                  "ID": "",
+                  "username": ""
+            }
+      ],
+      "L2ApproverList": [
+            {
+                  "ID": null,
+                  "username": null
+            }
+      ],
+       "usernameList": [
+            {
+                  "WorkforcePersonExternalID": "",
+                  "FullName": ""
+            }
+      ]
+}

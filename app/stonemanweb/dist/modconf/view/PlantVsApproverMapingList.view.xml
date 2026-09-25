@@ -1,0 +1,175 @@
+<mvc:View xmlns:cards="sap.f.cards" 
+          controllerName="modconfcontroller.PlanVsApproverMapingList"
+          height="100%"
+          xmlns:core="sap.ui.core"
+          xmlns:l="sap.ui.layout"
+          xmlns:f="sap.ui.layout.form"
+          xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          xmlns:T="sap.ui.table"
+            xmlns:TB=  "sap/m/headerToolbar"
+          xmlns:u="sap.ui.unified"
+          xmlns:c="sap.ui.core"
+          xmlns:a="sap.ui.core.Control">
+    
+    <Page id="_Mapingmaster" class="sapUiFioriObjectPage" title="" showHeader="true" showNavButton="true" navButtonPress=".navBack">
+        <content>
+            <f:SimpleForm id="_MappingMasterList"
+                          maxContainerCols="2"
+                          editable="true"
+                          layout="ResponsiveGridLayout"
+                          title="MappingList"
+                          labelSpanL="4"
+                          labelSpanM="4"
+                          emptySpanL="0"
+                          emptySpanM="0"
+                          columnsL="2"
+                          columnsM="1"
+                          validateFieldGroup="onValidateFieldGroup">
+                          
+                <VBox>
+        
+                    <Table id="Tblmapmaster"
+                           width="100%"
+                           growing="true"
+                           growingScrollToLoad="true"
+                           items="{EntryFormDataSourceModel>/value}"  
+
+                        class="sapUiSizeCompact"
+                        sticky="ColumnHeaders,HeaderToolbar"
+                        showSeparators="All"
+                        showNoData="true"
+                        growingThreshold="5"
+                        enableBusyIndicator="true"
+                        alternateRowColors="true"
+                        headerLevel="Auto"
+                        backgroundDesign="Translucent">
+                           
+                        <headerToolbar>
+                            <Toolbar>
+                                <content>
+                                 <u:FileUploader
+                                id="fileUploader"
+                                fileType="xlsx,xls"
+                                placeholder="Select Excel file"
+                                buttonText="Browse"
+                                width="250px" />
+                            <Button
+                                text="Upload Excel"
+                                icon="sap-icon://upload"
+                                type="Emphasized"
+                                press="UploadExclData" />
+                                   <!-- <SearchField placeholder="Input search" width="30%" liveChange="onSearch"></SearchField>-->
+                                    <ToolbarSpacer />
+                                    <Button type="Accept" text="Add Row" press="onAddRow"></Button>
+                                </content>
+                            </Toolbar>
+                        </headerToolbar>
+                        
+                        <columns>
+                            <Column>
+                                <Label text="Plant" />
+                            </Column>
+                            <Column>
+                                <Label text="Storage Location" />
+                            </Column>
+                             <Column>
+                                <Label text="Processes" />
+                            </Column>
+                            <Column>
+                                <Label text="Contractor" />
+                            </Column>
+                            <Column>
+                                <Label text="Supervisor" />
+                            </Column>
+                            <Column>
+                                <Label text="Quality Analyst" />
+                            </Column>
+                             <Column>
+                                <Label text="Shift" />
+                            </Column>
+                            
+                            <Column>
+                                <Label text="Production Accountant" />
+                            </Column>
+                          
+                        </columns>
+
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                  
+                                     <Input
+                                                            fieldGroupIds=" "
+                                                            value="{EntryFormDataSourceModel>Plant}"
+                                                            id="CflPlant"
+                                                            showValueHelp="true"
+                                                            valueHelpRequest="cflForPlant"     
+                                                                placeholder="Select Plant"
+                                                                change="ChangeJobWork" 
+                                                            
+                                                        />
+                                    <Input
+                                                            fieldGroupIds=" "
+                                                            value="{EntryFormDataSourceModel>Storage}"
+                                                            id="CflJobs"
+                                                            showValueHelp="true"
+                                                            valueHelpRequest="cflForStorage"     
+                                                                placeholder="Select Storage"
+                                                                change="ChangeJobWork" 
+                                                            
+                                                        />
+                                   <!-- <ComboBox width="100%" selectedKey="{EntryFormDataSourceModel>Storage}" items="{EntryFormDataSourceModel>/StoragelocationList}">
+                                        <core:Item key="{EntryFormDataSourceModel>StorageLocation}" text="{EntryFormDataSourceModel>StorageLocationName}" />
+                                    </ComboBox> -->
+                                   
+                                    <Input fieldGroupIds=" " value="{EntryFormDataSourceModel>ToProcess}"  id="CflProcess"  showValueHelp="true"  valueHelpRequest="FillProcess"        placeholder="Select Process"   change="ChangeJobWork"     />
+                                  
+                                    <Input fieldGroupIds=" " value="{EntryFormDataSourceModel>Contractor}"  id="CflCont"  showValueHelp="true"  valueHelpRequest="cflForContractor"        placeholder="Select Contractor"   change="ChangeJobWork"     />
+
+                                   <!-- <ComboBox width="100%" selectedKey="{EntryFormDataSourceModel>Contractor}" items="{EntryFormDataSourceModel>/ContractorList}" enabled="{EnbDisModal>/FromProcess}">
+                                        <core:Item key="{EntryFormDataSourceModel>Supplier}" text="{EntryFormDataSourceModel>SupplierFullName}" />
+                                    </ComboBox>-->
+
+                                     <Input   fieldGroupIds=" " value="{EntryFormDataSourceModel>Superviser}"
+                                    id="CflSup"  showValueHelp="true" valueHelpRequest="cflForSuperwiser" placeholder="" change="ChangeSuperWiser" 
+                                        />
+                                 <!--   <ComboBox width="100%" selectedKey="{EntryFormDataSourceModel>Superviser}" items="{EntryFormDataSourceModel>/SuperwiserNameList}">
+                                        <core:Item key="{EntryFormDataSourceModel>ID}" text="{EntryFormDataSourceModel>Description}" />
+                                    </ComboBox>
+                                    -->
+                                     <Input   fieldGroupIds=" " value="{EntryFormDataSourceModel>QA1}"
+                                    id="CflQA1"  showValueHelp="true" valueHelpRequest="cflForQA1" placeholder="" change="ChangeSuperWiser" 
+                                        />
+                                    
+
+                                    <ComboBox width="100%"  selectedKey="{EntryFormDataSourceModel>Shift}" items="{EntryFormDataSourceModel>/Shift}" >
+                                        <core:Item key="{EntryFormDataSourceModel>ID}" text="{EntryFormDataSourceModel>Name}" />
+                                    </ComboBox>
+                                    
+                                    
+
+                                     <Input   fieldGroupIds=" " value="{EntryFormDataSourceModel>Prodteam}"
+                                    id="CflProdteam"  showValueHelp="true" valueHelpRequest="FillProductionAccount" placeholder="" change="ChangeSuperWiser" 
+                                        />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </f:SimpleForm>
+        </content>
+        
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button id="submit" text="Submit" press="onSave" type="Accept" width="10%" />
+                    <Button id="_cancel" text="Cancel" press="onCancel" width="10%" />
+                   
+                    <Button id="Export" text="Export" press="OnExport" width="10%" />
+                </content>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

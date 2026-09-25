@@ -1,0 +1,38 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### GMCHeaderMax
+# @name GMCHeaderMax_GET
+GET {{server}}/odata/v4/maxkey/GMCHeaderMax
+Authorization: Basic {{username}}:{{password}}
+
+
+### GMCHeaderMax
+# @name GMCHeaderMax_POST
+POST {{server}}/odata/v4/maxkey/GMCHeaderMax
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "MaxGMCNo": "GMCHeaderMax-12704370"
+}
+
+
+### GMCHeaderMax
+# @name GMCHeaderMax_PATCH
+PATCH {{server}}/odata/v4/maxkey/GMCHeaderMax/GMCHeaderMax-12704370
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "MaxGMCNo": "GMCHeaderMax-12704370"
+}
+
+
+### GMCHeaderMax
+# @name GMCHeaderMax_DELETE
+DELETE {{server}}/odata/v4/maxkey/GMCHeaderMax/GMCHeaderMax-12704370
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

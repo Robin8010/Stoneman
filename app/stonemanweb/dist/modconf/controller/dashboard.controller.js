@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/mvc/Controller","sap/ui/model/json/JSONModel","../service/WebService","sap/ui/core/UIComponent"],function(e,o,n,r){let i;"use strict";return e.extend("modconfcontroller.dashboard",{onInit:function(){}})});
+//# sourceMappingURL=dashboard.controller.js.map

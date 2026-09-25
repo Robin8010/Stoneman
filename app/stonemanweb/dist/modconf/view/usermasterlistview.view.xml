@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mvc:View
+controllerName="modconfcontroller.usermasterlistview"
+    height="100%"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:T="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core"
+	xmlns:a="sap.ui.core.Control"
+>
+   <Page
+        id="_UserList"
+        class="sapUiFioriObjectPage" title=""
+        showHeader="true" showNavButton="true" navButtonPress=".navBack"
+    > 
+     <content>
+            <f:SimpleForm
+                id="_UserListForm"
+                maxContainerCols="2"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                title="UserMasterList"
+                labelSpanL="4"
+                labelSpanM="4"
+                emptySpanL="0"
+                backgroundDesign="Solid"
+                emptySpanM="0"
+                columnsL="2"
+                columnsM="1"
+                validateFieldGroup="onValidateFieldGroup"
+            >
+     <VBox id="Vbox" >
+    <!-- Search Field for Filtering -->
+   
+    <!-- List to Display Items -->
+  
+  <Table id="_UserTbl" items="{User>/value}"
+  width="100%"
+    growing="true"
+    growingScrollToLoad="true"
+      class="sapUiSizeCompact"
+                    sticky="ColumnHeaders,HeaderToolbar"
+                    showSeparators="All"
+                    showNoData="true"
+                    enableBusyIndicator="true"
+                    alternateRowColors="true"
+                    headerLevel="Auto"                    
+                    backgroundDesign="Translucent"
+   >
+  <headerToolbar>
+  <Toolbar >
+  <content>
+ <!-- <SearchField placeholder="Code" width="30%" liveChange="onSearch"></SearchField>-->
+  <SearchField placeholder="Name" width="30%" liveChange="onSearchWithName"></SearchField>
+  <ToolbarSpacer ></ToolbarSpacer>
+  <Button text="Addnew" type="Accept" press="Addnew"></Button>
+  </content>
+  </Toolbar>
+  </headerToolbar>
+							<columns>
+           <!--   <Column>
+									<Label visible="false" text="ID"/>
+								</Column>-->
+                <Column>
+									<Label text="Code"/>
+								</Column>
+								<Column>
+									<Label text="Name"/>
+								</Column>
+								<Column>
+									<Label text="IsAdmin"/>
+								</Column>
+                	<Column>
+									<Label text="IsCreater/Supervisor"/>
+								</Column>
+                <Column>
+									<Label text="QCApprover"/>
+								</Column> 
+                <Column>
+									<Label text="Contractor"/>
+								</Column> 
+                <Column>
+									<Label text="ProductionAccountant"/>
+								</Column>   
+                  <Column hAlign="End">
+									<Label  text="Action"/>
+								</Column>
+               
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells >
+                  <!--	<Text  visible="false" text="{User>ID}"/>-->
+                  		<Text text="{User>username}"/>
+                    <Text text="{User>Description}"/>
+										<Text text="{User>IsAdmin}"/>
+										<Text text="{User>ManagGMC}"/>
+                    <Text text="{User>L1Approver}"/>
+                     <Text text="{User>Contractor}"/>
+                      <Text text="{User>IsProductionAccount}"/>
+										
+                    
+                    <Button type="Attention" text="Edit" press="onEditPress"></Button>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+
+  </VBox>  
+   </f:SimpleForm>
+     </content>
+     <footer>
+            <Toolbar>
+                <content>
+                <ToolbarSpacer ></ToolbarSpacer>
+                <ToolbarSpacer ></ToolbarSpacer>
+                <ToolbarSpacer ></ToolbarSpacer>
+                    <Button
+                        id="cancel11"
+                        text="Cancel"
+                        press="onCancel"
+                         type="Accept"
+                        width="10%"
+                    />
+                    
+                    
+                   
+
+                 
+                </content>
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>
