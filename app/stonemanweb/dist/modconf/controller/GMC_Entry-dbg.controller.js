@@ -80,8 +80,8 @@ sap.ui.define([
                 if(formMode ==2)
                 {
                             debugger;
-                            this.handleUIOperation();
-                             this.fillInspectionType();
+                       await     this.handleUIOperation();
+                        await     this.fillInspectionType();
                             this.fieldEnalbe()             
                 }
                 if(formMode ==3)
@@ -290,7 +290,13 @@ sap.ui.define([
         },
         handleUIOperation: async function () {
             debugger;
-         
+            let oModel = this.getView().getModel('EnbDisModal');
+           oModel.setProperty('/BtnRejectEnable', false)
+            oModel.setProperty('/BtnApproveEnable', false)
+            oModel.setProperty('/BtnPostEnable',false);
+            oModel.setProperty('/BtnSubmitEnable',false);
+            oModel.setProperty('/BtnPrintEnable',false);
+
             this.FillStoragelocation();
             this.FillFromprocess();
             this.FillToprocess();
@@ -299,9 +305,9 @@ sap.ui.define([
 
            this.ToPlant();
             this.FillToStorageLocation();
-         this.ContractorName();
-       this.FillQAL2Approval();
-        this.FillToSuperWiser();
+      await   this.ContractorName();
+      await this.FillQAL2Approval();
+    await  this.FillToSuperWiser();
 
          
            
@@ -1554,7 +1560,8 @@ debugger
         onSave: async function () {
             try {
                 debugger;
-                  await this.getmaxKey();
+                let abc=globalVarForUserId;
+               
                 
                // if(this.Validation())
                 //{
@@ -1610,7 +1617,16 @@ debugger
                                                 }
                                                 if (!isRecordAdded) {
                                                     debugger;
+                                        const formMode = loginInfo.FormMode;
 
+                                                    let userid = loginInfo.Usercode;
+                                                    let userName = loginInfo.Username;
+
+                                                    globalVarForUserId= userid;
+                                                    globalVarForUserName=userid;
+
+                                                    if(globalVarForUserId!="")
+                                                    {
                                                     let usertypemodel = this.getUserType();
                                                     let usertype = usertypemodel.Usertype;
                                                     // const loginModel = this.getOwnerComponent().getModel('UserModel');
@@ -1623,10 +1639,11 @@ debugger
                                                         this.getView().setModel(oModel, this.getEntryFormDataSourceModelName());
                                                     }
                                 //check Blank data
+                                debugger
                                                     const modelData = this.getView().getModel(this.getEntryFormDataSourceModelName()).getData();
                                                     let trgObject = this.getView().getModel("SaveRequest").getData();
                                                     console.log("Target Object:", trgObject);
-
+                                                    await this.getmaxKey();
                                                     this.transferObjectValues(modelData, trgObject);
                                                     await this.onPressOfEntryFormSaveButton(trgObject);
                                                     let response = this.getApiResponseObject();;
@@ -1635,6 +1652,11 @@ debugger
                                                         this.router.navTo(this.getBackwardRoute());
                                                         MessageToast.show("Record added successfully");
                                                     }
+                                                }
+                                                else
+                                                {
+                                                    MessageToast.show("user information not loaded connect to administrator");  
+                                                }
                                                 }
                                             }
                             }
@@ -1659,9 +1681,29 @@ debugger
               debugger;
                     let usertypemodel = this.getUserType();
                     let usertype = usertypemodel.Usertype;
+                    
+                    let loginInfo = this.getLoginInfo();
+                       const formMode = loginInfo.FormMode;
+
+                                                    let userid = loginInfo.Usercode;
+                                                    let userName = loginInfo.Username;
+
+                                                    globalVarForUserId= userid;
+                      
+                                                    globalVarForUserName=userid;
+                    
+                       let oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
+                      let Creater=    oModel.getProperty('/Creater')
+                        if(Creater==null || Creater=="")
+                        {
+                            MessageBox.show("creater can not blank.");
+                            return; // Stop further execution
+                        }
 
                     if (usertype == "L1") {
                         let oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
+                         
+                      
                           let QADocumentNum=    oModel.getProperty('/QADocumentNum')
                         let InspectionType=    oModel.getProperty('/InspectionType')
                         if(QADocumentNum==null || QADocumentNum=="")
@@ -1669,6 +1711,7 @@ debugger
                             MessageBox.show("QA Document Number is mandatory for Internal Inspection Type.");
                             return; // Stop further execution
                         }
+                        
                         if(InspectionType==null || InspectionType=="")
                         {
                             MessageBox.show("Inspection Type is mandatory.");
@@ -1748,6 +1791,15 @@ debugger
                 debugger;
                     let usertypemodel = this.getUserType();
                     let usertype = usertypemodel.Usertype;
+
+                                            let loginInfo = this.getLoginInfo();
+                                            const formMode = loginInfo.FormMode;
+
+                                                    let userid = loginInfo.Usercode;
+                                                    let userName = loginInfo.Username;
+
+                                                    globalVarForUserId= userid;
+                                                    globalVarForUserName=userid;
                     if (usertype == "L1") {
                         let oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
                         

@@ -1560,7 +1560,8 @@ debugger
         onSave: async function () {
             try {
                 debugger;
-                  await this.getmaxKey();
+                let abc=globalVarForUserId;
+               
                 
                // if(this.Validation())
                 //{
@@ -1616,7 +1617,16 @@ debugger
                                                 }
                                                 if (!isRecordAdded) {
                                                     debugger;
+                                        const formMode = loginInfo.FormMode;
 
+                                                    let userid = loginInfo.Usercode;
+                                                    let userName = loginInfo.Username;
+
+                                                    globalVarForUserId= userid;
+                                                    globalVarForUserName=userid;
+
+                                                    if(globalVarForUserId!="")
+                                                    {
                                                     let usertypemodel = this.getUserType();
                                                     let usertype = usertypemodel.Usertype;
                                                     // const loginModel = this.getOwnerComponent().getModel('UserModel');
@@ -1629,18 +1639,36 @@ debugger
                                                         this.getView().setModel(oModel, this.getEntryFormDataSourceModelName());
                                                     }
                                 //check Blank data
+                                debugger
                                                     const modelData = this.getView().getModel(this.getEntryFormDataSourceModelName()).getData();
                                                     let trgObject = this.getView().getModel("SaveRequest").getData();
                                                     console.log("Target Object:", trgObject);
-
+                                                    await this.getmaxKey();
+                                                   // let oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
+                                                     //oModel.setProperty('/GMCNo', 'abc');
                                                     this.transferObjectValues(modelData, trgObject);
                                                     await this.onPressOfEntryFormSaveButton(trgObject);
                                                     let response = this.getApiResponseObject();;
                                                     if (response.success) {
+                                                        this.clearGenericEntryForm();
                                                         console.log("No duplicate found. Proceeding with save..okok.");
                                                         this.router.navTo(this.getBackwardRoute());
                                                         MessageToast.show("Record added successfully");
                                                     }
+                                                    else{
+                                                         MessageToast.show("Data not Added kindly connect to administrator");  
+
+                                                           // var oError = response.responseJSON.error.message;
+
+  
+                                                           // this.clearGenericEntryForm();
+                                                           
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageToast.show("user information not loaded connect to administrator");  
+                                                }
                                                 }
                                             }
                             }
@@ -1657,6 +1685,7 @@ debugger
                    // }
                 }
             catch (error) {
+                  MessageToast.show(error.message);
                 MessageBox.show(error.message);
             }
         },
@@ -1665,9 +1694,29 @@ debugger
               debugger;
                     let usertypemodel = this.getUserType();
                     let usertype = usertypemodel.Usertype;
+                    
+                    let loginInfo = this.getLoginInfo();
+                       const formMode = loginInfo.FormMode;
+
+                                                    let userid = loginInfo.Usercode;
+                                                    let userName = loginInfo.Username;
+
+                                                    globalVarForUserId= userid;
+                      
+                                                    globalVarForUserName=userid;
+                    
+                       let oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
+                      let Creater=    oModel.getProperty('/Creater')
+                        if(Creater==null || Creater=="")
+                        {
+                            MessageBox.show("creater can not blank.");
+                            return; // Stop further execution
+                        }
 
                     if (usertype == "L1") {
                         let oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
+                         
+                      
                           let QADocumentNum=    oModel.getProperty('/QADocumentNum')
                         let InspectionType=    oModel.getProperty('/InspectionType')
                         if(QADocumentNum==null || QADocumentNum=="")
@@ -1675,6 +1724,7 @@ debugger
                             MessageBox.show("QA Document Number is mandatory for Internal Inspection Type.");
                             return; // Stop further execution
                         }
+                        
                         if(InspectionType==null || InspectionType=="")
                         {
                             MessageBox.show("Inspection Type is mandatory.");
@@ -1754,6 +1804,15 @@ debugger
                 debugger;
                     let usertypemodel = this.getUserType();
                     let usertype = usertypemodel.Usertype;
+
+                                            let loginInfo = this.getLoginInfo();
+                                            const formMode = loginInfo.FormMode;
+
+                                                    let userid = loginInfo.Usercode;
+                                                    let userName = loginInfo.Username;
+
+                                                    globalVarForUserId= userid;
+                                                    globalVarForUserName=userid;
                     if (usertype == "L1") {
                         let oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
                         
