@@ -1659,11 +1659,6 @@ debugger
                                                     }
                                                     else{
                                                          MessageToast.show("Data not Added kindly connect to administrator");  
-
-                                                           // var oError = response.responseJSON.error.message;
-
-  
-                                                           // this.clearGenericEntryForm();
                                                            
                                                     }
                                                 }
