@@ -63,7 +63,7 @@ sap.ui.define([
                await this.saveEntryForm(sType, sEntryFormSaveURL, oReqData);
 
                 //on Sucess Clear everything
-                this.clearGenericEntryForm();
+                //this.clearGenericEntryForm();
                 
             },
 
@@ -84,7 +84,7 @@ sap.ui.define([
                     sType = "PATCH"
                
                     await this.saveEntryForm(sType, sEntryFormSaveURL, oReqData);
-                    //this.clearGenericEntryForm();
+                    this.clearGenericEntryForm();
                 
             },
 

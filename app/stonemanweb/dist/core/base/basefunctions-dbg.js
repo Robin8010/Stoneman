@@ -128,7 +128,7 @@ callApiUsingFetch: async function (type, url, reqData, headerData, dataType) {
         } 
       },
       callApi: function (type, url, reqData) {
-    // debugger
+     debugger
         BusyIndicator.show(0);
         let oRequestData = '';
 
@@ -164,7 +164,7 @@ callApiUsingFetch: async function (type, url, reqData, headerData, dataType) {
                 enabled: false
               }
             ],
-debugger
+
             success: function (data) {
               // Check if setApiResponseObject is available in the current scope
               console.log(data);
@@ -177,7 +177,6 @@ debugger
               // Handle error
               console.error(error);
               BusyIndicator.hide();
-              debugger
               apiHandler.setApiResponseObject(false, error);
               reject(error);
             }.bind(this)

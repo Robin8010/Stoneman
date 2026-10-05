@@ -1627,8 +1627,9 @@ debugger
 
                                                     if(globalVarForUserId!="")
                                                     {
-                                                    let usertypemodel = this.getUserType();
-                                                    let usertype = usertypemodel.Usertype;
+                                                    //let usertypemodel = this.getUserType();
+                                                   // let usertype = usertypemodel.Usertype;
+                                                     let usertype = loginInfo.UserType;
                                                     // const loginModel = this.getOwnerComponent().getModel('UserModel');
                                                     //   globalVarForUserId= loginModel.value[0].ID;
                                                     if (usertype == "CR") {
@@ -1650,10 +1651,11 @@ debugger
                                                     await this.onPressOfEntryFormSaveButton(trgObject);
                                                     let response = this.getApiResponseObject();;
                                                     if (response.success) {
-                                                        this.clearGenericEntryForm();
+                                                       
                                                         console.log("No duplicate found. Proceeding with save..okok.");
                                                         this.router.navTo(this.getBackwardRoute());
                                                         MessageToast.show("Record added successfully");
+                                                         this.clearGenericEntryForm();
                                                     }
                                                     else{
                                                          MessageToast.show("Data not Added kindly connect to administrator");  
@@ -1692,11 +1694,12 @@ debugger
         onApprove: async function () {
             try {
               debugger;
-                    let usertypemodel = this.getUserType();
-                    let usertype = usertypemodel.Usertype;
+                   // let usertypemodel = this.getUserType();
+                    //let usertype = usertypemodel.Usertype;
                     
-                    let loginInfo = this.getLoginInfo();
+                     let loginInfo = this.getLoginInfo();
                        const formMode = loginInfo.FormMode;
+                        let usertype = loginInfo.UserType;
 
                                                     let userid = loginInfo.Usercode;
                                                     let userName = loginInfo.Username;
@@ -1734,12 +1737,13 @@ debugger
                         let IsQA2=    oModel.getProperty('/NQAName')
                         if(IsQA1==globalVarForUserId)
                         {
+                             //let oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
                             oModel.setProperty('/FirstLevelStatus', 'Approve')
                             this.getView().setModel(oModel, this.getEntryFormDataSourceModelName());
                         }
                         else if(IsQA2==globalVarForUserId)
                         {
-                             let oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
+                             //let oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
                             oModel.setProperty('/SecondLevelUser', globalVarForUserId)
                             oModel.setProperty('/SecondLevelStatus', 'Approve')
                             oModel.setProperty('/IsDocumentreadyForPosting',true);
@@ -1789,7 +1793,12 @@ debugger
                     if (response.success) {
                         console.log("No duplicate found. Proceeding with save..okok.");
                         this.router.navTo(this.getBackwardRoute());
-                        MessageToast.show("Record added successfully");
+                        MessageToast.show("Record Aproved successfully");
+                         this.clearGenericEntryForm();
+                    }
+                    else
+                    {
+                        MessageToast.show("Record not Approved conntact to administrator");
                     }
                
             }
@@ -1802,11 +1811,12 @@ debugger
             try {
               
                 debugger;
-                    let usertypemodel = this.getUserType();
-                    let usertype = usertypemodel.Usertype;
+                   // let usertypemodel = this.getUserType();
+                    //let usertype = usertypemodel.Usertype;
 
                                             let loginInfo = this.getLoginInfo();
                                             const formMode = loginInfo.FormMode;
+                                             let usertype = loginInfo.UserType;
 
                                                     let userid = loginInfo.Usercode;
                                                     let userName = loginInfo.Username;
@@ -1873,7 +1883,13 @@ debugger
                         console.log("No duplicate found. Proceeding with save..okok.");
                         this.router.navTo(-1);
                         MessageToast.show("Record added successfully");
+                         this.clearGenericEntryForm();
                     }
+                    else
+                    {
+                        MessageToast.show("Record Approved conntact to administrator");
+                    }
+                    
                 
             }
             catch (error) {
