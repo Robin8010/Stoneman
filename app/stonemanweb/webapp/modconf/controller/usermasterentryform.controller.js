@@ -24,6 +24,7 @@ sap.ui.define([
                 debugger;
                 this.identifyFormMode(oEvent);
                 //check FormMode
+                
                  let loginInfo = this.getLoginInfo();
             let ID=  loginInfo.RowId;
             const formMode = loginInfo.FormMode;
@@ -61,7 +62,7 @@ sap.ui.define([
                     );
                     let oModel = new sap.ui.model.json.JSONModel(oPath);
                     this.getView().setModel(oModel, this.getEntryFormDataSourceModelName());
-                    await this.showEntryForm();
+                    await this.showEntryForm(formMode);
 
                 }
                 this.handleUIOperation();

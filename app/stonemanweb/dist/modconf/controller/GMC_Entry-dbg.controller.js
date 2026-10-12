@@ -1646,7 +1646,7 @@ debugger
                                                     console.log("Target Object:", trgObject);
                                                     await this.getmaxKey();
                                                    // let oModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
-                                                     //oModel.setProperty('/GMCNo', 'abc');
+                                                    // oModel.setProperty('/GMCNo', 'abc');
                                                     this.transferObjectValues(modelData, trgObject);
                                                     await this.onPressOfEntryFormSaveButton(trgObject);
                                                     let response = this.getApiResponseObject();;
@@ -1658,12 +1658,11 @@ debugger
                                                          this.clearGenericEntryForm();
                                                     }
                                                     else{
-                                                         MessageToast.show("Data not Added kindly connect to administrator");  
-
-                                                           // var oError = response.responseJSON.error.message;
-
-  
-                                                           // this.clearGenericEntryForm();
+                                                        const xhr = response.object;                  // the jqXHR
+                                                    const textData = xhr.responseText;            // raw string
+                                                    const errData  = xhr.responseJSON; 
+                                                   // console.log(errData.error.message);
+                                                         MessageToast.show(errData.error.message);  
                                                            
                                                     }
                                                 }
