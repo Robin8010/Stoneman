@@ -116,58 +116,13 @@ sap.ui.define([
             oModel.setProperty("/disableUsername", false);
         },
 
-        cflForPurchaseorder: async function () {
-            try {
-                debugger;
-                 let loginInfo = this.getLoginInfo();
-            const formMode = loginInfo.FormMode;
-                if(formMode ==3)
-                {
-                    await this.getmaxKey();
-                }
 
 
-               // //Already saved value get api
-             //    await this.createNewModelUsingAPI(
-             //   'GET',
-             //   `odata/v4/gmcheader-services/GMCHeader`,
-              //  '',
-              //  'SavedInfo'
-         //   );
-          //  debugger
-           // let odata = this.getView().getModel('SavedInfo');//Uncomment when API run
-          //  let fullArray = odata.getProperty("/value");
-          //  let jobworkPoArray = fullArray.map(item => item.JobworkPo);
 
 
-               debugger;
-             //   var filterString = jobworkPoArray.map(id => `PurchaseOrder ne '${id}'`).join(' and ');
-            var   filterString=`Quantity gt 0 and UOM eq 'PC' and YY1_Supervisor_PDI  eq '${globalVarForUserName }'`;
-           //  var   filterString=`Quantity gt 0 and UOM eq 'PC' and PurchaseOrder eq '2500000633' `;
-                await this.createNewModelUsingAPI(
-                    'GET',
-                    //`/sap/opu/odata4/sap/zune_sb_porreport_api/srvd_a2x/sap/zune_sd_zune_dd_po_prodord/0001/ZUne_DD_PO_ProdOrd?$format=json`,
-                    `/sap/opu/odata4/sap/zune_sb_porreport_api/srvd_a2x/sap/zune_sd_zune_dd_po_prodord/0001/ZUne_DD_PO_ProdOrd?$filter=${filterString}&$top=10000&$format=json`,
-                    '',
-                    this.getCflListViewDataSourceModelName()
-                );
-                this.setCflDisplayColumns(["PurchaseOrder"]);
-                this.setCflDataColumns(["PurchaseOrder"]);
-                this.setCflValueAndDisplay("Purchase Order", "PurchaseOrder", "", "");
 
-                MessageToast.show("Data loading please wait...");
 
-                this.showCfl(
-                    "PurchaseOrder",
-                    this.getCflListViewDataSourceModelName(),
-                    "value",
-                    this.onConfirmInspectionLot.bind(this)
-                );
-            }
-            catch (error) {
-                MessageBox.show("cflForPurchaseOrder -: " + error.message);
-            }
-        },
+  
         ChangeJobWork: function () {
             let viewModel = this.getView().getModel(this.getEntryFormDataSourceModelName());
             let InspectionLot = viewModel.getProperty(`/value`);
@@ -2325,7 +2280,267 @@ _getExistingRecords: async function (sJobworkPo) {
                 var sFormattedDate = oFormat.format(oDate);
 
                 return sFormattedDate;
+        },
+        /* ==========================================================================
+   Purchase Order value help - direct API search
+   Keeps your working createNewModelUsingAPI call and filter.
+
+   Paste into the controller, replacing:
+     - cflForPurchaseorderold  (this is the new cflForPurchaseorder)
+     - showCfl                 (same as before, plus one optional 6th parameter)
+   Other CFLs keep working exactly as before.
+   ========================================================================== */
+
+// ---------------------------------------------------------------------------
+// Builds the API url. sSearch empty = normal list, otherwise direct PO search
+// ---------------------------------------------------------------------------
+_getPoUrl: function (sSearch) {
+    var esc = function (s) { return String(s).replace(/'/g, "''"); };
+
+    var filterString;
+
+    if (sSearch) {
+    filterString = `contains(PurchaseOrder,'${esc(sSearch)}')`;
+    } else {
+        // RAP needs every Quantity condition paired with its unit (UOM) in the same branch
+        var sSup = `YY1_Supervisor_PDI eq '${esc(globalVarForUserName)}'`;
+        filterString = `POStatus eq 'OPEN' and (` +
+            `(Quantity gt 0 and UOM eq 'PC' and ${sSup}) or ` +
+            `(Quantity gt 0 and UOM eq 'SET' and ${sSup}))`;
+    }
+
+    return `/sap/opu/odata4/sap/zune_sb_porreport_api/srvd_a2x/sap/zune_sd_zune_dd_po_prodord/0001/ZUne_DD_PO_ProdOrd?$filter=${filterString}&$top=100&$format=json`;
+},
+
+// ---------------------------------------------------------------------------
+// Value help entry point
+// ---------------------------------------------------------------------------
+cflForPurchaseorder: async function () {
+    try {
+        let loginInfo = this.getLoginInfo();
+        const formMode = loginInfo.FormMode;
+        if (formMode == 3) {
+            await this.getmaxKey();
         }
+
+        // first load (first 1000 records)
+        await this.createNewModelUsingAPI(
+            'GET',
+            this._getPoUrl(""),
+            '',
+            this.getCflListViewDataSourceModelName()
+        );
+
+        this.setCflDisplayColumns(["PurchaseOrder"]);
+        this.setCflDataColumns(["PurchaseOrder"]);
+        this.setCflValueAndDisplay("Purchase Order", "PurchaseOrder", "", "");
+
+        MessageToast.show("Data loading please wait...");
+
+        this.showCfl(
+            "PurchaseOrder",
+            this.getCflListViewDataSourceModelName(),
+            "value",
+            this.onConfirmInspectionLot.bind(this),
+            null,
+            // called when the user searches in the dialog -> direct API call
+            async (sValue) => {
+                await this.createNewModelUsingAPI(
+                    'GET',
+                    this._getPoUrl(sValue),
+                    '',
+                    this.getCflListViewDataSourceModelName()
+                );
+            }
+        );
+    }
+    catch (error) {
+        MessageBox.show("cflForPurchaseOrder -: " + error.message);
+    }
+},
+
+// ---------------------------------------------------------------------------
+// showCfl - same as before; new optional 6th parameter onServerSearch
+// ---------------------------------------------------------------------------
+showCfl: function (sCflId, sModelName, sPath, onConfirmCallback, onCancelCallback, onServerSearch) {
+
+    let oDisplayColumnList = [];
+    let oColumn;
+    let oColumnList = [];
+    let oController = this;
+
+    let oInput = sap.ui.getCore().byId(sCflId);
+
+    // build Display Columns
+    this.getCflDisplayColumns().forEach(sDisplayColumnText => {
+
+        let oLabel = new sap.m.Label({
+            text: sDisplayColumnText,
+        });
+
+        let oIcon = new sap.ui.core.Icon({
+            src: "sap-icon://filter",
+            color: sap.ui.core.IconColor.Default,
+            activeColor: sap.ui.core.IconColor.Positive,
+            press: function () {
+                let columnIndex = oDisplayColumnList.indexOf(oDisplayColumn);
+                oController.setCflSearchProperty(oController.getCflDataColumnList()[columnIndex]);
+            }
+        });
+
+        let oHBox = new sap.m.HBox({
+            items: [oLabel, oIcon]
+        });
+
+        let oDisplayColumn = new sap.m.Column({
+            header: oHBox
+        });
+
+        oDisplayColumnList.push(oDisplayColumn);
+    });
+
+    // build Column Cells
+    this.getCflDataColumnList().forEach(oColumnObj => {
+        if (typeof oColumnObj === 'object' && oColumnObj !== null) {
+
+            oColumn = oColumnObj;
+
+        }
+        else if (typeof oColumnObj === 'string' && oColumnObj !== null) {
+
+            if (oColumnObj == "Edit") {
+                oColumn = new sap.m.Button({ icon: "sap-icon://navigation-right-arrow", press: this.onPressOfListViewEditButton.bind(this) });
+            }
+            else if (oColumnObj == "Print") {
+                oColumn = new sap.m.Button({ icon: "sap-icon://print", press: this.onPressOfListViewPrintButton.bind(this) });
+            }
+            else {
+                oColumn = new sap.m.Text({ text: "{" + sModelName + ">" + oColumnObj + "}" });
+            }
+        }
+
+        var oHBox = new sap.m.HBox({
+            items: [oColumn],
+            alignContent: sap.m.FlexAlignContent.Left,
+            alignItems: sap.m.FlexAlignItems.Left,
+        });
+
+        oColumnList.push(oHBox);
+    });
+
+    //build Table
+    var oDialog = new sap.m.TableSelectDialog({
+
+        title: this.getCflTitle(),
+        columns: oDisplayColumnList,
+        // 1000 rows rendered at once is slow, so grow in steps (only for API-search lists)
+        growing: !!onServerSearch,
+        growingThreshold: 100,
+        items: {
+            path: sModelName + ">/" + sPath,
+            template:
+                new sap.m.ColumnListItem({
+                    cells:
+                        oColumnList
+                })
+        },
+
+        search: async function (oEvent) {
+
+            var sValue = oEvent.getParameter("value");
+
+            // ---- direct API search (Purchase Order) ----
+            if (onServerSearch) {
+                oDialog.setBusy(true);
+                try {
+                    await onServerSearch(sValue.trim());
+                    // the helper may have created a new model, so bind the current one again
+                    oDialog.setModel(oController.getView().getModel(sModelName), sModelName);
+                } catch (e) {
+                    MessageToast.show("Search failed: " + e.message);
+                } finally {
+                    oDialog.setBusy(false);
+                }
+                return;
+            }
+
+            // ---- existing behaviour for all other CFLs ----
+            var oBinding = oEvent.getSource().getBinding("items");
+
+            if (sValue.length > 0) {
+                var oFilter = new sap.ui.model.Filter({
+                    path: oController.getCflSearchProperty(),
+                    test: function (value) {
+                        return value !== null && value !== undefined && value.toString().toLowerCase().includes(sValue.toLowerCase());
+                    }
+                });
+                oBinding.filter([oFilter]);
+                if (oBinding.filter([oFilter]).iLength == 0) {
+                    let filter = oController.getCflListViewDataSourceURL() + "& $filter=" + oController.getCflSearchProperty() + " contains '" + sValue + "'";
+                    await oController.createNewModelUsingAPI(oController.getCflListViewDataSourceURLType(), filter, oController.getCflListViewDataSourceURL(), oController.getCflListViewDataSourceURLReqData(), oController.getCflListViewDataSourceModelName());
+                }
+            }
+            else {
+                oBinding.filter([]);
+            }
+        },
+
+        confirm: function (oEvent) {
+
+            var oBinding = oEvent.getSource().getBinding("items");
+            oBinding.filter([]);
+
+            if (oController.getCflValueFor().length > 0 && oController.getCflValueFrom().length > 0) {
+                let oCflValueFor = oController.getCflValueFor();
+                let oCflValueFrom = oController.getCflValueFrom();
+                let oValue = oEvent.getParameter("selectedContexts")[0].getObject()[oCflValueFrom];
+                oController.getView().getModel(oController.getEntryFormDataSourceModelName()).setProperty(oCflValueFor, oValue);
+            }
+
+            if (oController.getCflValueFor().length == 0 && oController.getCflValueFrom().length == 0 && oController.getCflDisplayFor().length > 0 && oController.getCflDisplayFrom().length > 0) {
+
+                let oCflDisplayFor = oController.getCflDisplayFor();
+                let oCflDisplayFrom = oController.getCflDisplayFrom();
+                let oCflDisplayHidden = oController.getCflDisplayHidden();
+                let oValue = oEvent.getParameter("selectedContexts")[0].getObject()[oCflDisplayFrom];
+                sap.ui.getCore().byId(oCflDisplayFor).setValue(oValue);
+                if (oCflDisplayHidden !== undefined && oCflDisplayHidden !== null) {
+                    sap.ui.getCore().byId(oCflDisplayFor).data("data-displayHidden", oEvent.getParameter("selectedContexts")[0].getObject()[oCflDisplayHidden]);
+                }
+            }
+
+            if (oEvent.getParameter("selectedContexts").length == 1) {
+                oController.setCflObject(oEvent.getParameter("selectedContexts")[0].getObject());
+            }
+
+            if (oEvent.getParameter("selectedContexts").length > 1) {
+                oController.setCflObjectList(oEvent.getParameter("selectedContexts"));
+            }
+
+            oDialog.destroy();
+
+            if (onConfirmCallback) {
+                onConfirmCallback();
+            }
+        },
+        cancel: function () {
+            if (onCancelCallback) {
+                onCancelCallback();
+            }
+        }
+
+    });
+
+    oDialog.setModel(this.getView().getModel(sModelName), sModelName);
+
+    var oTableForm = new sap.ui.layout.form.SimpleForm({
+        title: this.getCflTitle(),
+        content: oDialog
+    });
+
+    return oDialog.open();
+},
+
 
 
     });

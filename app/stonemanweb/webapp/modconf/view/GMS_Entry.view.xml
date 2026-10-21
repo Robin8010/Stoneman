@@ -50,6 +50,7 @@
                         fieldGroupIds=" "
                         value="{EntryFormDataSourceModel>/JobworkPo}"
                         id="_jobW"
+                        
                         showValueHelp="true"
                           valueHelpRequest="cflForPurchaseorder"     
                             placeholder="Select purchase order"
